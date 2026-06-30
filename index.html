@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nathy Peluso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <button class="nav__hamburger" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#club-grasa" class="btn btn--pink nav__cta">JOIN THE CLUB</a>
+  </nav>
+
+  <!-- SLIDE-IN MENU -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="menu-panel" id="menuPanel">
+    <button class="menu-panel__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="menu-panel__links">
+      <a href="#bio" class="menu-link" data-en="BIO" data-es="BIO">BIO</a>
+      <a href="#merch" class="menu-link" data-en="MERCH" data-es="MERCH">MERCH</a>
+      <a href="#music" class="menu-link" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
+      <a href="#videos" class="menu-link" data-en="VIDEOS" data-es="VIDEOS">VIDEOS</a>
+      <a href="#tour" class="menu-link" data-en="TOUR" data-es="TOUR">TOUR</a>
+      <a href="#club-grasa" class="menu-link" data-en="CLUB GRASA" data-es="CLUB GRASA">CLUB GRASA</a>
+    </nav>
+    <div class="menu-panel__lang">
+      <label class="lang-toggle">
+        <input type="radio" name="lang" value="en" checked /> EN
+      </label>
+      <span>/</span>
+      <label class="lang-toggle">
+        <input type="radio" name="lang" value="es" /> ES
+      </label>
+    </div>
+    <div class="menu-panel__socials">
+      <a href="#" aria-label="Instagram" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" aria-label="X / Twitter" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="#" aria-label="Threads" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.474 12.01v-.017c.024-3.576.874-6.43 2.521-8.481C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.594 12c.022 3.086.713 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.048c-.832 0-1.836.237-2.458 1.493l-1.856-.787c.787-1.701 2.233-2.708 4.314-2.719h.059c3.016.022 4.818 1.897 5.088 5.209.19.024.379.05.565.08 1.337.21 2.47.73 3.26 1.499.955.93 1.42 2.197 1.34 3.664-.1 1.835-.8 3.59-2.072 4.93-1.489 1.564-3.599 2.363-6.269 2.383z"/></svg>
+      </a>
+      <a href="#" aria-label="YouTube" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" aria-label="TikTok" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+      </a>
+      <a href="#" aria-label="Email" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero__bg-noise"></div>
+      <div class="hero__image">
+        <img src="assets/images/hero.jpg" alt="Nathy Peluso" />
+      </div>
+      <h1 class="hero__title">NATHY</h1>
+      <div class="hero__arrows" aria-hidden="true">
+        <span class="arrow arrow--down">↓</span>
+        <span class="arrow arrow--down">↓</span>
+      </div>
+    </section>
+
+    <!-- TOUR -->
+    <section class="tour" id="tour">
+      <div class="container">
+        <table class="tour__table">
+          <thead>
+            <tr>
+              <th data-en="DATE" data-es="FECHA">DATE</th>
+              <th data-en="PLACE" data-es="LUGAR">PLACE</th>
+              <th data-en="EVENT" data-es="EVENTO">EVENT</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>30.05.26</td>
+              <td>ROMA,<br />ITALY</td>
+              <td>• CLUB GRASA DJ SET<br />SPRING ATTITUDE FESTIVAL</td>
+              <td class="tour__actions">
+                <a href="#" class="btn btn--outline-dashed" data-en="RSV" data-es="RSV">RSV</a>
+                <a href="#" class="btn btn--outline-dashed" data-en="TICKETS" data-es="TICKETS">TICKETS</a>
+              </td>
+            </tr>
+            <tr>
+              <td>30.05.26</td>
+              <td>ROMA,<br />ITALY</td>
+              <td>• CLUB GRASA DJ SET<br />SPRING ATTITUDE FESTIVAL</td>
+              <td class="tour__actions">
+                <a href="#" class="btn btn--outline-dashed" data-en="RSV" data-es="RSV">RSV</a>
+                <a href="#" class="btn btn--outline-dashed" data-en="TICKETS" data-es="TICKETS">TICKETS</a>
+              </td>
+            </tr>
+            <tr>
+              <td>30.05.26</td>
+              <td>ROMA,<br />ITALY</td>
+              <td>• CLUB GRASA DJ SET<br />SPRING ATTITUDE FESTIVAL</td>
+              <td class="tour__actions">
+                <a href="#" class="btn btn--outline-dashed" data-en="RSV" data-es="RSV">RSV</a>
+                <a href="#" class="btn btn--outline-dashed" data-en="TICKETS" data-es="TICKETS">TICKETS</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- BIO -->
+    <section class="bio" id="bio">
+      <div class="bio__inner">
+        <div class="bio__image">
+          <img src="assets/images/bio.jpg" alt="Nathy Peluso" />
+        </div>
+        <div class="bio__content">
+          <p class="bio__text" data-en="Since the launch of her debut album Calambre in 2020, Nathy Peluso, singer, rapper and Argentine-born composer based in Spain, has shaken the Latin music scene with a genre-defying style and an overwhelming stage presence. At 29, she has won five Latin GRAMMYs, tying with Mercedes Sosa as the most awarded Argentine artist in the history of these awards. She also made history by becoming the first woman to win the award for Best Rap/Hip-Hop Song. In total, she has accumulated 16 Latin GRAMMY nominations." data-es="Desde el lanzamiento de su álbum debut Calambre en 2020, Nathy Peluso, cantante, rapera y compositora argentina radicada en España, ha sacudido la escena de la música latina con un estilo que rompe géneros y una presencia escénica arrolladora. A sus 29 años, ha ganado cinco Latin GRAMMYs, empatando con Mercedes Sosa como la artista argentina más premiada en la historia de estos galardones. Además, hizo historia al convertirse en la primera mujer en ganar el premio a Mejor Canción de Rap/Hip-Hop. A este recorrido se suman un total de 16 nominaciones a los Latin GRAMMYs.">
+            Desde el lanzamiento de su álbum debut Calambre en 2020, Nathy Peluso, cantante, rapera y compositora argentina radicada en España, ha sacudido la escena de la música latina con un estilo que rompe géneros y una presencia escénica arrolladora. A sus 29 años, ha ganado cinco Latin GRAMMYs, empatando con Mercedes Sosa como la artista argentina más premiada en la historia de estos galardones. Además, hizo historia al convertirse en la primera mujer en ganar el premio a Mejor Canción de Rap/Hip-Hop. A este recorrido se suman un total de 16 nominaciones a los Latin GRAMMYs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section class="music" id="music">
+      <div class="container">
+        <div class="music__grid">
+          <div class="music__covers">
+            <div class="music__cover-item">
+              <img src="assets/images/cover-1.jpg" alt="Album cover" />
+            </div>
+            <div class="music__cover-item">
+              <img src="assets/images/cover-2.jpg" alt="Album cover" />
+            </div>
+            <div class="music__cover-item">
+              <img src="assets/images/cover-3.jpg" alt="Album cover" />
+            </div>
+          </div>
+          <div class="music__list">
+            <table class="music__table">
+              <thead>
+                <tr>
+                  <th data-en="YEAR" data-es="AÑO">YEAR</th>
+                  <th data-en="TYPE" data-es="TIPO">TYPE</th>
+                  <th data-en="NAME" data-es="NOMBRE">NAME</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025</td>
+                  <td data-en="EP" data-es="EP">EP</td>
+                  <td>• MALPORTADA</td>
+                  <td><a href="#" class="btn btn--pink-sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a></td>
+                </tr>
+                <tr>
+                  <td>2024</td>
+                  <td data-en="SINGLE" data-es="SINGLE">SINGLE</td>
+                  <td>• QUE LLUEVAN FLORES</td>
+                  <td><a href="#" class="btn btn--pink-sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a></td>
+                </tr>
+                <tr>
+                  <td>2023</td>
+                  <td data-en="ALBUM" data-es="ÁLBUM">ALBUM</td>
+                  <td>• GRASA</td>
+                  <td><a href="#" class="btn btn--pink-sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a></td>
+                </tr>
+                <tr>
+                  <td>2020</td>
+                  <td data-en="ALBUM" data-es="ÁLBUM">ALBUM</td>
+                  <td>• CALAMBRE</td>
+                  <td><a href="#" class="btn btn--pink-sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="videos" id="videos">
+      <div class="videos__bg">
+        <img src="assets/images/videos-bg.jpg" alt="" />
+      </div>
+      <div class="videos__content">
+        <a href="#" class="btn btn--white" data-en="WATCH NOW" data-es="VER AHORA">WATCH NOW</a>
+      </div>
+    </section>
+
+    <!-- CLUB GRASA -->
+    <section class="club-grasa" id="club-grasa">
+      <div class="club-grasa__bg-noise"></div>
+      <div class="club-grasa__inner">
+        <div class="club-grasa__left">
+          <div class="club-grasa__logo" aria-label="Club Grasa">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <div class="club-grasa__logo-text">club<br />grasa</div>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+        <div class="club-grasa__right">
+          <div class="club-grasa__photos">
+            <div class="club-grasa__photo"><img src="assets/images/club-1.jpg" alt="Club Grasa" /></div>
+            <div class="club-grasa__photo"><img src="assets/images/club-2.jpg" alt="Club Grasa" /></div>
+            <div class="club-grasa__photo club-grasa__photo--video">
+              <img src="assets/images/club-3.jpg" alt="Club Grasa" />
+              <button class="play-btn" aria-label="Play video">▶</button>
+            </div>
+            <div class="club-grasa__photo"><img src="assets/images/club-4.jpg" alt="Club Grasa" /></div>
+          </div>
+          <div class="club-grasa__mixes">
+            <h3 class="club-grasa__mixes-title" data-en="LATEST MIXES" data-es="ÚLTIMAS MEZCLAS">LATEST MIXES</h3>
+            <ul class="mix-list">
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+              <li class="mix-item">
+                <span>CLUB GRASA X ZBONGO CLUB IBIZA / AGOSTO 2025</span>
+                <a href="#" class="btn btn--outline-dashed btn--sm" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOIN THE CLUB FORM -->
+      <div class="join-club" id="join-club">
+        <div class="join-club__card">
+          <div class="join-club__header">
+            <div class="join-club__logo-sm">club grasa</div>
+          </div>
+          <h2 class="join-club__title" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</h2>
+          <form class="join-club__form" onsubmit="return false;">
+            <input type="text" placeholder="NOMBRE / NAME" class="join-club__input" />
+            <input type="email" placeholder="EMAIL" class="join-club__input" />
+            <button type="submit" class="btn btn--pink join-club__submit" data-en="SUBSCRIBE" data-es="SUSCRIBIRSE">SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
