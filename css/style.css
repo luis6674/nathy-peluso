@@ -496,7 +496,6 @@ html[lang="es"] .lang-es-only { display: block; }
     height: 56px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 16px;
     z-index: 150;
   }
