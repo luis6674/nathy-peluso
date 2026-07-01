@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bio — Nathy Peluso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- MOBILE TOPBAR -->
+  <div class="mobile-topbar">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="btn btn--pink" id="joinTrigerMobile">JOIN THE CLUB</a>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <div class="page page--bio">
+
+    <!-- SIDEBAR NAV -->
+    <aside class="sidebar sidebar--on-white" id="sidebar">
+      <a href="#" class="btn btn--pink sidebar__cta" id="joinTrigger" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</a>
+      <nav class="sidebar__nav">
+        <a href="bio.html" class="nav-link is-active" data-en="BIO" data-es="BIO">BIO</a>
+        <a href="merch.html" class="nav-link" data-en="MERCH" data-es="MERCH">MERCH</a>
+        <a href="music.html" class="nav-link" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
+        <a href="videos.html" class="nav-link" data-en="VIDEOS" data-es="VIDEOS">VIDEOS</a>
+        <a href="index.html#tour" class="nav-link" data-en="TOUR" data-es="TOUR">TOUR</a>
+        <a href="club-grasa.html" class="nav-link" data-en="CLUB GRASA" data-es="CLUB GRASA">CLUB GRASA</a>
+      </nav>
+      <div class="sidebar__lang">
+        <label class="lang-toggle"><input type="radio" name="lang" value="en" checked /> EN</label>
+        <span>/</span>
+        <label class="lang-toggle"><input type="radio" name="lang" value="es" /> ES</label>
+      </div>
+      <div class="sidebar__socials">
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="X" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+        </a>
+        <a href="#" aria-label="Spotify" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.58-1.04 8.5-.6 11.66 1.34.36.22.47.7.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.99-8.15-2.56-11.97-1.4a.94.94 0 1 1-.55-1.8c4.36-1.32 9.78-.68 13.5 1.6.44.27.58.85.31 1.29zm.13-3.4C15.6 8.3 8.9 8.08 5.1 9.24a1.13 1.13 0 1 1-.66-2.16c4.36-1.32 11.76-1.07 16.4 1.65a1.13 1.13 0 0 1-1.14 1.95z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+        </a>
+        <a href="#" aria-label="Email" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+      <div class="bio-content">
+
+        <img class="bio-photo bio-photo--top" src="assets/images/bio/salsa.jpg" alt="Nathy Peluso" />
+        <img class="bio-photo" src="assets/images/bio/couch.jpg" alt="Nathy Peluso" />
+
+        <div class="bio-text">
+          <p data-es="Desde el lanzamiento de su álbum debut Calambre en 2020, Nathy Peluso, cantante, rapera y compositora argentina radicada en España, ha sacudido la escena de la música latina con un estilo que rompe géneros y una presencia escénica arrolladora. A sus 29 años, ha ganado cinco Latin GRAMMYs, empatando con Mercedes Sosa como la artista argentina más premiada en la historia de estos galardones. Además, hizo historia al convertirse en la primera mujer en ganar el premio a Mejor Canción de Rap/Hip-Hop. A este recorrido se suman un total de 16 nominaciones a los Latin GRAMMYs.">
+            Since the release of her debut album Calambre in 2020, Nathy Peluso, an Argentine singer, rapper, and songwriter based in Spain, has shaken up the Latin music scene with her genre-bending style and captivating stage presence. At 29, she has won five Latin GRAMMYs, tying with Mercedes Sosa as the most awarded Argentine female artist in the history of the awards. She also made history as the first woman to win the award for Best Rap/Hip-Hop Song. Furthermore, she adds two more nominations for Latin GRAMMYs 2025 for her collaborations "DE MARAVISHA" with Tokischa and "XQ ERES ASÍ" with Álvaro Díaz.
+          </p>
+          <p data-es="Reconocida por sus potentes presentaciones en vivo y su originalidad artística, ha pisado escenarios y festivales icónicos como Coachella, Movistar Arena, Sónar y Mad Cool. Su colaboración con Bizarrap (BZRP Music Sessions #36) se convirtió en un fenómeno viral, acumulando millones de reproducciones en todo el mundo y consolidando su proyección internacional.">
+            Known for her commanding live performances and artistic originality, she has taken the stage at iconic venues and festivals such as Coachella, Movistar Arena, Sónar, and Mad Cool. Her collaboration with Bizarrap (BZRP Music Sessions #36) became a viral sensation, garnering millions of streams worldwide.
+          </p>
+          <p data-es="En 2024 lanzó su segundo álbum, GRASA, una obra íntima y ambiciosa que fusiona rap, salsa, baladas y sonidos tropicales, inspirada en el cine de mafias y la salsa neoyorquina de los años 70. El disco incluye colaboraciones con artistas como Blood Orange, Duki, C. Tangana, Ca7riel y Paco Amoroso, y marcó un punto de inflexión en su narrativa artística. GRASA obtuvo tres Latin GRAMMYs y fue nominado a los GRAMMYs 2025 como Mejor Álbum de Rock o Alternativo Latino. Ese mismo año, presentó CLUB GRASA, un EP de reinterpretaciones electrónicas de su universo sonoro, y debutó en The Tonight Show Starring Jimmy Fallon con una aclamada actuación junto a Blood Orange.">
+            In 2024, she released her sophomore album, GRASA — an intimate and ambitious work that blends rap, salsa, ballads, and tropical sounds, inspired by mafia cinema and 1970s New York salsa. The album features collaborations with artists such as Blood Orange, Duki, C. Tangana, Ca7riel, and Paco Amoroso. It earned three Latin GRAMMYs and was nominated for the 2025 GRAMMYs for Best Latin Rock or Alternative Album. That same year, she released CLUB GRASA, an EP offering electronic reinterpretations of her sonic universe, and made her debut on The Tonight Show Starring Jimmy Fallon with an acclaimed performance alongside Blood Orange.
+          </p>
+          <p data-es="Entre 2024 y 2025, Nathy emprendió su primera gira mundial, GRASA Tour, agotando entradas en ciudades como Nueva York, Los Ángeles, Londres y París, consolidándose como una de las voces más influyentes de la música global contemporánea.">
+            Between 2024 and 2025, Nathy launched her first world tour, GRASA Tour, selling out venues in cities like New York, Los Angeles, London, and Paris — cementing her status as one of the most influential voices in today's global music scene.
+          </p>
+          <p data-es="En febrero de 2025 lanzó EROTIKA, un homenaje a la explosiva escena de la salsa erótica neoyorquina de los años 90. Este lanzamiento anticipó una nueva etapa creativa que se expandió con MALPORTADA, su colaboración junto a Rawayana, y con el EP MALPORTADA, un proyecto de seis canciones compuesto en Puerto Rico que reafirma su conexión visceral con la salsa. Con una energía cruda y provocadora, la artista reinventa el género desde su propio lenguaje, combinando lirismo audaz y virtuosismo sonoro.">
+            In February 2025, she released the single EROTIKA, an homage to the explosive 1990s New York erotic salsa scene. Through this track Nathy marks the prelude to a new era that kicked off with "Malportada," her explosive collaboration with Rawayana that fuses tropical cadence with sonic rebellion. This single is the beginning of an EP dedicated to salsa, with the same name. "Malportada" EP features six tracks, composed in Puerto Rico to reaffirm her visceral connection with salsa. With a raw, tropical energy, the Argentine artist reinvents the genre in her own way, between the provocation of her lyrics and sonic virtuosity. A new Caribbean pulse with which Nathy Peluso dazzles once again.
+          </p>
+          <p class="lang-es-only">
+            En febrero de 2026, Nathy Peluso marca un nuevo hito en su carrera con el lanzamiento de "Como en el Idilio", una salsa clásica junto a Marc Anthony. Esta colaboración histórica no solo confirma su lugar dentro del linaje salsero, sino que también subraya su capacidad para dialogar de igual a igual con los grandes referentes del género, tendiendo un puente entre tradición y vanguardia.
+          </p>
+        </div>
+
+        <img class="bio-photo bio-photo--bottom" src="assets/images/bio/silver-jacket.jpg" alt="Nathy Peluso" />
+
+      </div>
+    </main>
+  </div>
+
+  <a href="#" class="btn btn--outline-dashed scroll-up" data-en="SCROLL UP ↑" data-es="SUBIR ↑">SCROLL UP ↑</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

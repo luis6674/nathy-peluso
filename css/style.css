@@ -90,7 +90,10 @@ button { font-family: inherit; }
   display: flex;
   flex-direction: column;
   padding: 24px 20px 28px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
   z-index: 20;
 }
 .sidebar--on-yellow { background: var(--yellow); }
@@ -428,6 +431,48 @@ button { font-family: inherit; }
 }
 
 /* ============================================================
+   BIO PAGE
+   ============================================================ */
+.bio-content {
+  min-height: 100svh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px 100px;
+}
+
+.bio-photo {
+  width: 100%;
+  max-width: 620px;
+}
+.bio-photo--top { margin-top: -40px; }
+.bio-photo--bottom { margin-bottom: -60px; }
+
+.bio-text {
+  max-width: 620px;
+  padding: 48px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  letter-spacing: -0.2px;
+  color: var(--accent);
+}
+.bio-text p + p { margin-top: 1.4em; }
+
+/* shown only when Spanish is selected — e.g. paragraphs with no
+   English translation supplied yet */
+.lang-es-only { display: none; }
+html[lang="es"] .lang-es-only { display: block; }
+
+.scroll-up {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 30;
+}
+
+/* ============================================================
    MOBILE
    ============================================================ */
 @media (max-width: 900px) {
@@ -492,4 +537,9 @@ button { font-family: inherit; }
   .slider { padding: 20px 6vw; }
   .slider__item { width: 100px; }
   .slider__item.is-active { width: 220px; }
+
+  .bio-content { padding-top: 56px; }
+  .bio-photo--top { margin-top: 0; }
+  .bio-photo--bottom { margin-bottom: 0; }
+  .bio-text { padding: 32px 0; font-size: 14px; }
 }
