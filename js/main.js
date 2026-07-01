@@ -1,30 +1,56 @@
 /* ============================================================
-   MENU
+   MOBILE SIDEBAR TOGGLE
    ============================================================ */
-const menuToggle  = document.getElementById('menuToggle');
-const menuClose   = document.getElementById('menuClose');
-const menuPanel   = document.getElementById('menuPanel');
-const menuOverlay = document.getElementById('menuOverlay');
-const menuLinks   = document.querySelectorAll('.menu-link');
+const hamburger   = document.getElementById('hamburger');
+const sidebar      = document.getElementById('sidebar');
+const menuOverlay  = document.getElementById('menuOverlay');
+const navLinks     = document.querySelectorAll('.nav-link');
 
-function openMenu() {
-  menuPanel.classList.add('is-open');
+function openSidebar() {
+  sidebar.classList.add('is-open');
   menuOverlay.classList.add('is-open');
   document.body.style.overflow = 'hidden';
 }
-function closeMenu() {
-  menuPanel.classList.remove('is-open');
+function closeSidebar() {
+  sidebar.classList.remove('is-open');
   menuOverlay.classList.remove('is-open');
   document.body.style.overflow = '';
 }
 
-menuToggle.addEventListener('click', openMenu);
-menuClose.addEventListener('click', closeMenu);
-menuOverlay.addEventListener('click', closeMenu);
-menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+if (hamburger) hamburger.addEventListener('click', openSidebar);
+if (menuOverlay) menuOverlay.addEventListener('click', closeSidebar);
+navLinks.forEach(link => link.addEventListener('click', closeSidebar));
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeMenu();
+  if (e.key === 'Escape') closeSidebar();
+});
+
+/* ============================================================
+   JOIN THE CLUB MODAL
+   ============================================================ */
+const joinModal        = document.getElementById('joinModal');
+const joinTrigger       = document.getElementById('joinTrigger');
+const joinTriggerMobile = document.getElementById('joinTrigerMobile');
+const joinClose         = document.getElementById('joinClose');
+
+function openJoinModal(e) {
+  if (e) e.preventDefault();
+  if (joinModal) joinModal.classList.add('is-open');
+}
+function closeJoinModal() {
+  if (joinModal) joinModal.classList.remove('is-open');
+}
+
+if (joinTrigger) joinTrigger.addEventListener('click', openJoinModal);
+if (joinTriggerMobile) joinTriggerMobile.addEventListener('click', openJoinModal);
+if (joinClose) joinClose.addEventListener('click', closeJoinModal);
+if (joinModal) {
+  joinModal.addEventListener('click', e => {
+    if (e.target === joinModal) closeJoinModal();
+  });
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeJoinModal();
 });
 
 /* ============================================================
@@ -42,35 +68,3 @@ function applyLang(lang) {
 langInputs.forEach(input => {
   input.addEventListener('change', () => applyLang(input.value));
 });
-
-/* ============================================================
-   NAV COLOR ADAPTATION
-   — switches hamburger / CTA tint based on section bg
-   ============================================================ */
-const nav = document.getElementById('nav');
-const sections = document.querySelectorAll('main > section');
-
-const sectionThemes = {
-  home:        { color: '#FF2D78' },
-  tour:        { color: '#FF2D78' },
-  bio:         { color: '#FF2D78' },
-  music:       { color: '#FF2D78' },
-  videos:      { color: '#ffffff' },
-  'club-grasa':{ color: '#ffffff' },
-};
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      const theme = sectionThemes[id];
-      if (theme) {
-        nav.querySelectorAll('.nav__hamburger span').forEach(s => {
-          s.style.background = theme.color;
-        });
-      }
-    }
-  });
-}, { threshold: 0.4 });
-
-sections.forEach(s => observer.observe(s));

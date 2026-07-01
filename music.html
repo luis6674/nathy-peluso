@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nathy Peluso</title>
+  <title>Music — Nathy Peluso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -23,14 +23,14 @@
   <div class="page">
 
     <!-- SIDEBAR NAV -->
-    <aside class="sidebar sidebar--on-yellow" id="sidebar">
+    <aside class="sidebar sidebar--on-white" id="sidebar">
       <a href="#" class="btn btn--pink sidebar__cta" id="joinTrigger" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</a>
       <nav class="sidebar__nav">
         <a href="bio.html" class="nav-link" data-en="BIO" data-es="BIO">BIO</a>
         <a href="merch.html" class="nav-link" data-en="MERCH" data-es="MERCH">MERCH</a>
-        <a href="music.html" class="nav-link" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
+        <a href="music.html" class="nav-link is-active" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
         <a href="videos.html" class="nav-link" data-en="VIDEOS" data-es="VIDEOS">VIDEOS</a>
-        <a href="index.html#tour" class="nav-link is-active" data-en="TOUR" data-es="TOUR">TOUR</a>
+        <a href="index.html#tour" class="nav-link" data-en="TOUR" data-es="TOUR">TOUR</a>
         <a href="club-grasa.html" class="nav-link" data-en="CLUB GRASA" data-es="CLUB GRASA">CLUB GRASA</a>
       </nav>
       <div class="sidebar__lang">
@@ -62,72 +62,39 @@
 
     <!-- MAIN CONTENT -->
     <main class="content">
-      <div class="home-content">
+      <div class="music-content">
 
-        <!-- HERO -->
-        <section class="hero" id="home">
-          <div class="hero__photo">
-            <img src="assets/images/home/hero-photo.png" alt="Nathy Peluso" />
-          </div>
-          <div class="hero__mask">
-            <img src="assets/images/home/hero-mask.png" alt="" aria-hidden="true" />
-          </div>
-        </section>
-
-        <!-- TOUR -->
-        <section class="tour" id="tour">
-          <table class="tour__table">
+        <div class="music-info">
+          <table class="music-info__table">
             <thead>
               <tr>
-                <th data-en="DATE" data-es="FECHA">DATE</th>
-                <th data-en="PLACE" data-es="LUGAR">PLACE</th>
-                <th data-en="EVENT" data-es="EVENTO">EVENT</th>
+                <th data-en="YEAR" data-es="AÑO">YEAR</th>
+                <th data-en="TYPE" data-es="TIPO">TYPE</th>
+                <th data-en="NAME" data-es="NOMBRE">NAME</th>
               </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td id="musicInfoYear">2025</td>
+                <td id="musicInfoType" data-en="EP" data-es="EP">EP</td>
+                <td>★ <span id="musicInfoName">MALPORTADA</span></td>
+              </tr>
+            </tbody>
           </table>
+          <div>
+            <a href="#" class="btn btn--outline-dashed music-info__listen" id="musicInfoListen" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
+          </div>
+        </div>
 
-          <!-- Bands in Town widget mounts here -->
-          <div class="tour__widget-slot" id="bit-tour-widget" data-artist="nathy-peluso"></div>
-        </section>
+        <div class="slider" id="slider">
+          <!-- slider items injected by js/music.js -->
+        </div>
 
       </div>
     </main>
   </div>
 
-  <!-- JOIN THE CLUB MODAL -->
-  <div class="modal-overlay" id="joinModal">
-    <div class="join-card">
-      <button class="join-card__close" id="joinClose" aria-label="Close">✕</button>
-      <div class="join-card__label" data-en="UNITE A:" data-es="ÚNETE A:">UNITE A:</div>
-      <div class="join-card__logo">club<br />grasa</div>
-      <div class="join-card__member-row">
-        <span data-en="BECOME A" data-es="HAZTE">BECOME A</span>
-        <mark data-en="MEMBER" data-es="MIEMBRO">MEMBER</mark>
-        <span>Nº001</span>
-      </div>
-      <div class="join-card__photo"></div>
-      <form class="join-card__form" onsubmit="return false;">
-        <div class="join-card__field">
-          <label for="joinName" data-en="Name:" data-es="Nombre:">Name:</label>
-          <input type="text" id="joinName" />
-        </div>
-        <div class="join-card__field">
-          <label for="joinEmail" data-en="Email:" data-es="Email:">Email:</label>
-          <input type="email" id="joinEmail" />
-        </div>
-        <div class="join-card__field">
-          <label for="joinCountry" data-en="Country:" data-es="País:">Country:</label>
-          <input type="text" id="joinCountry" />
-        </div>
-      </form>
-      <label class="join-card__terms">
-        <input type="checkbox" checked />
-        <span data-en="I accept the terms and privacy policy" data-es="Acepto los términos y la política de privacidad">I accept the terms and privacy policy</span>
-      </label>
-      <button type="submit" class="btn btn--black join-card__submit" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</button>
-    </div>
-  </div>
-
   <script src="js/main.js"></script>
+  <script src="js/music.js"></script>
 </body>
 </html>
