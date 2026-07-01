@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Music — Nathy Peluso</title>
+  <title>Club Grasa — Nathy Peluso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <div class="page page--music">
+  <div class="page page--club-grasa">
 
     <!-- MOBILE TOPBAR -->
     <div class="mobile-topbar">
@@ -27,10 +27,10 @@
       <nav class="sidebar__nav">
         <a href="bio.html" class="nav-link" data-en="BIO" data-es="BIO">BIO</a>
         <a href="https://apparell.com/collections/nathy-peluso?sort_by=created-descending" target="_blank" rel="noopener" class="nav-link" data-en="MERCH" data-es="MERCH">MERCH</a>
-        <a href="music.html" class="nav-link is-active" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
+        <a href="music.html" class="nav-link" data-en="MUSIC" data-es="MÚSICA">MUSIC</a>
         <a href="videos.html" class="nav-link" data-en="VIDEOS" data-es="VIDEOS">VIDEOS</a>
         <a href="index.html#tour" class="nav-link" data-en="TOUR" data-es="TOUR">TOUR</a>
-        <a href="club-grasa.html" class="nav-link" data-en="CLUB GRASA" data-es="CLUB GRASA">CLUB GRASA</a>
+        <a href="club-grasa.html" class="nav-link is-active" data-en="CLUB GRASA" data-es="CLUB GRASA">CLUB GRASA</a>
       </nav>
       <div class="sidebar__lang">
         <label class="lang-toggle"><input type="radio" name="lang" value="en" checked /> EN</label>
@@ -61,39 +61,16 @@
 
     <!-- MAIN CONTENT -->
     <main class="content">
-      <div class="music-content">
-
-        <div class="music-info">
-          <table class="music-info__table">
-            <thead>
-              <tr>
-                <th data-en="YEAR" data-es="AÑO">YEAR</th>
-                <th data-en="TYPE" data-es="TIPO">TYPE</th>
-                <th data-en="NAME" data-es="NOMBRE">NAME</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="musicInfoYear">2025</td>
-                <td id="musicInfoType" data-en="EP" data-es="EP">EP</td>
-                <td>★ <span id="musicInfoName">MALPORTADA</span></td>
-              </tr>
-            </tbody>
-          </table>
-          <div>
-            <a href="#" class="btn btn--outline-dashed music-info__listen" id="musicInfoListen" data-en="LISTEN NOW" data-es="ESCUCHAR">LISTEN NOW</a>
-          </div>
+      <div class="placeholder-content">
+        <div>
+          <div class="placeholder-content__label">club grasa</div>
+          <span class="placeholder-content__note" data-en="Content coming soon" data-es="Contenido próximamente">Content coming soon</span>
         </div>
-
-        <div class="slider" id="slider">
-          <!-- slider items injected by js/music.js -->
-        </div>
-
       </div>
     </main>
+
   </div>
 
   <script src="js/main.js"></script>
-  <script src="js/music.js"></script>
 </body>
 </html>
