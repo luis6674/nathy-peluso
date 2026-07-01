@@ -60,11 +60,23 @@ const langInputs = document.querySelectorAll('input[name="lang"]');
 
 function applyLang(lang) {
   document.documentElement.lang = lang;
-  document.querySelectorAll('[data-en][data-es]').forEach(el => {
-    el.textContent = el.dataset[lang] || el.textContent;
+  document.querySelectorAll('[data-es]').forEach(el => {
+    el.dataset.en = el.dataset.en || el.textContent;
+    el.textContent = el.dataset[lang] || el.dataset.en;
   });
 }
 
 langInputs.forEach(input => {
   input.addEventListener('change', () => applyLang(input.value));
 });
+
+/* ============================================================
+   SCROLL UP
+   ============================================================ */
+const scrollUpBtn = document.querySelector('.scroll-up');
+if (scrollUpBtn) {
+  scrollUpBtn.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
