@@ -26,6 +26,7 @@
 .page--music    { --accent: var(--pink-light); --accent-contrast: var(--white); }
 .page--bio      { --accent: var(--blue);       --accent-contrast: var(--white); }
 .page--club-grasa { --accent: var(--coral);    --accent-contrast: var(--white); }
+.page--videos   { --accent: var(--black);      --accent-contrast: var(--white); } /* placeholder until mockup provided */
 
 /* ============================================================
    RESET
@@ -471,6 +472,35 @@ html[lang="es"] .lang-es-only { display: block; }
   z-index: 30;
   color: var(--accent);
   border-color: var(--accent);
+}
+
+/* ============================================================
+   PLACEHOLDER PAGES (content coming later)
+   ============================================================ */
+.placeholder-content {
+  min-height: 100svh;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.placeholder-content__label {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 10vw, 90px);
+  text-transform: lowercase;
+  color: var(--accent);
+  text-align: center;
+}
+.placeholder-content__note {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  color: var(--accent);
+  opacity: 0.6;
 }
 
 /* ============================================================
