@@ -15,6 +15,7 @@
   --font-body:    Arial, Helvetica, sans-serif;
 
   --sidebar-w: 230px;
+  --ink: var(--black); /* neutral sidebar text (e.g. lang toggle) on light pages */
 }
 
 /* ============================================================
@@ -26,7 +27,7 @@
 .page--music    { --accent: var(--pink-light); --accent-contrast: var(--white); }
 .page--bio      { --accent: var(--blue);       --accent-contrast: var(--white); }
 .page--club-grasa { --accent: var(--coral);    --accent-contrast: var(--white); }
-.page--videos   { --accent: var(--black);      --accent-contrast: var(--white); } /* placeholder until mockup provided */
+.page--videos   { --accent: var(--white);      --accent-contrast: var(--black); --ink: var(--white); } /* dark theme, per Videos.jpg mockup — layout/content still pending */
 
 /* ============================================================
    RESET
@@ -99,6 +100,7 @@ button { font-family: inherit; }
 }
 .sidebar--on-yellow { background: var(--yellow); }
 .sidebar--on-white   { background: var(--white); }
+.sidebar--on-black   { background: var(--black); }
 
 .sidebar__cta { align-self: flex-start; margin-bottom: 36px; }
 
@@ -128,7 +130,7 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--black);
+  color: var(--ink);
   margin-bottom: auto;
 }
 .lang-toggle { display: flex; align-items: center; gap: 4px; cursor: pointer; }
@@ -502,6 +504,9 @@ html[lang="es"] .lang-es-only { display: block; }
   color: var(--accent);
   opacity: 0.6;
 }
+
+/* dark theme pages (e.g. Videos) flip the placeholder background */
+.page--videos .placeholder-content { background: var(--black); }
 
 /* ============================================================
    MOBILE
