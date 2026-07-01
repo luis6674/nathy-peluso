@@ -362,9 +362,12 @@ button { font-family: inherit; }
   padding: 32px 40px 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  margin-left: auto;
+  width: min(420px, 40vw);
 }
 .music-info__table {
+  width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -375,10 +378,10 @@ button { font-family: inherit; }
   text-align: left;
   font-size: 11px;
   letter-spacing: 1.5px;
-  padding: 0 20px 10px 0;
+  padding: 0 32px 10px 0;
 }
 .music-info__table td {
-  padding: 0 20px 12px 0;
+  padding: 0 32px 12px 0;
   border-top: 1px dashed var(--pink);
   padding-top: 10px;
   font-weight: 700;
