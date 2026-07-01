@@ -28,10 +28,9 @@ document.addEventListener('keydown', e => {
 /* ============================================================
    JOIN THE CLUB MODAL
    ============================================================ */
-const joinModal        = document.getElementById('joinModal');
-const joinTrigger       = document.getElementById('joinTrigger');
-const joinTriggerMobile = document.getElementById('joinTrigerMobile');
-const joinClose         = document.getElementById('joinClose');
+const joinModal   = document.getElementById('joinModal');
+const joinTrigger = document.getElementById('joinTrigger');
+const joinClose   = document.getElementById('joinClose');
 
 function openJoinModal(e) {
   if (e) e.preventDefault();
@@ -42,7 +41,6 @@ function closeJoinModal() {
 }
 
 if (joinTrigger) joinTrigger.addEventListener('click', openJoinModal);
-if (joinTriggerMobile) joinTriggerMobile.addEventListener('click', openJoinModal);
 if (joinClose) joinClose.addEventListener('click', closeJoinModal);
 if (joinModal) {
   joinModal.addEventListener('click', e => {
