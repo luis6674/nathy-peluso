@@ -2,7 +2,7 @@
    TOKENS
    ============================================================ */
 :root {
-  --yellow:   #F5E800;
+  --yellow:   #FFE22B;
   --pink:     #FF2AA0;
   --coral:    #F05A5A;
   --blue:     #4169E1;
@@ -133,7 +133,7 @@ button { font-family: inherit; }
   color: var(--yellow);
   border-radius: 2px;
 }
-.social-icon svg { width: 100%; height: 100%; }
+.social-icon svg { width: 100%; height: 100%; vertical-align: top; }
 
 /* mobile hamburger (hidden on desktop) */
 .hamburger {
