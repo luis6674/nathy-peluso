@@ -79,6 +79,7 @@ button { font-family: inherit; }
      [sidebar] [main content]
    ============================================================ */
 .page {
+  position: relative;
   display: flex;
   min-height: 100svh;
 }
@@ -101,6 +102,15 @@ button { font-family: inherit; }
 .sidebar--on-yellow { background: var(--yellow); }
 .sidebar--on-white   { background: var(--white); }
 .sidebar--on-black   { background: var(--black); }
+
+/* overlay variant — sits transparently on top of a full-bleed photo/video
+   instead of occupying its own colored column (Videos, Club Grasa) */
+.sidebar--overlay {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: transparent;
+  z-index: 50;
+}
 
 .sidebar__cta { align-self: flex-start; margin-bottom: 36px; }
 
@@ -204,7 +214,13 @@ button { font-family: inherit; }
   width: 100%;
   height: 100%;
 }
-.hero__photo img { object-position: center 20%; }
+.hero__photo img,
+.hero__photo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
 .hero__mask img { object-fit: fill; }
 
 /* ============================================================
@@ -477,6 +493,254 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 
 /* ============================================================
+   VIDEOS PAGE
+   — full-bleed background image swaps per selected slider item
+   ============================================================ */
+.videos-content {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--black);
+}
+.videos-bg {
+  position: absolute;
+  inset: 0;
+}
+.videos-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+.videos-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.35));
+}
+
+.videos-watch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.videos-slider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 130px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  padding: 0 24px;
+  overflow-x: auto;
+}
+.videos-slider::-webkit-scrollbar { display: none; }
+.videos-slider__item {
+  width: 150px;
+  aspect-ratio: 16/9;
+  flex-shrink: 0;
+  cursor: pointer;
+  opacity: 0.55;
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.videos-slider__item img { width: 100%; height: 100%; object-fit: cover; }
+.videos-slider__item.is-active {
+  opacity: 1;
+  border-color: var(--white);
+}
+
+.videos-info {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  text-align: right;
+}
+.videos-info__table {
+  margin-left: auto;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+.videos-info__table th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 0 24px 8px 0;
+}
+.videos-info__table td {
+  padding: 8px 24px 0 0;
+  border-top: 1px dashed var(--white);
+  font-weight: 700;
+}
+
+/* ============================================================
+   CLUB GRASA PAGE
+   ============================================================ */
+
+/* the overlay sidebar sits on the video, not the coral panel, so it
+   needs its own white/coral pairing regardless of the page's
+   --accent (which the right-hand panel uses for its own coral bg) */
+.page--club-grasa .sidebar--overlay {
+  --accent: var(--white);
+  --accent-contrast: var(--coral);
+}
+
+.club-grasa-content {
+  display: flex;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.cg-left {
+  position: relative;
+  flex: 1 1 60%;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--black);
+}
+.cg-left video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cg-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+.cg-logo {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 620px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+.cg-star {
+  position: absolute;
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cg-right {
+  flex: 0 0 420px;
+  background: var(--coral);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 32px;
+  overflow: hidden;
+}
+
+.cg-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px dashed rgba(255,255,255,0.4);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.cg-tab {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.65;
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cg-tab.is-active {
+  opacity: 1;
+  background: var(--white);
+  color: var(--coral);
+}
+
+.cg-panel { display: none; flex: 1; overflow-y: auto; }
+.cg-panel.is-active { display: block; }
+
+.cg-mix-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px dashed rgba(255,255,255,0.35);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.cg-mix-item:last-child { border-bottom: 1px dashed rgba(255,255,255,0.35); }
+.cg-mix-item .btn--outline-dashed { color: var(--white); border-color: var(--white); flex-shrink: 0; }
+
+.cg-manifesto p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 1.3em;
+}
+
+.cg-live-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cg-live-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.2);
+}
+.cg-live-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.25);
+  border: none;
+  color: var(--white);
+  font-size: 20px;
+  cursor: pointer;
+}
+.cg-live-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+.cg-live-caption .btn--outline-dashed { color: var(--white); border-color: var(--white); flex-shrink: 0; }
+
+/* ============================================================
    PLACEHOLDER PAGES (content coming later)
    ============================================================ */
 .placeholder-content {
@@ -577,4 +841,15 @@ html[lang="es"] .lang-es-only { display: block; }
   .bio-photo--top { margin-top: 0; }
   .bio-photo--bottom { margin-bottom: 0; }
   .bio-text { padding: 32px 0; font-size: 14px; }
+
+  .videos-content { padding-top: 56px; height: auto; min-height: 100svh; }
+  .videos-slider { bottom: 90px; }
+  .videos-info { bottom: 16px; right: 16px; }
+  .videos-watch { top: 56%; }
+
+  .club-grasa-content { flex-direction: column; height: auto; min-height: 100svh; }
+  .cg-left { height: 46vh; flex: none; padding-top: 56px; }
+  .cg-right { flex: none; padding: 24px 20px 40px; }
+  .cg-tabs { flex-wrap: wrap; }
+  .cg-live-grid { grid-template-columns: 1fr; }
 }
