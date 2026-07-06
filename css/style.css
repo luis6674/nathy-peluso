@@ -707,7 +707,7 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 
 .cg-right {
-  flex: 0 0 420px;
+  flex: 0 0 540px;
   background: var(--coral);
   color: var(--white);
   display: flex;
