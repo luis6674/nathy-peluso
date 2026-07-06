@@ -234,38 +234,61 @@ button { font-family: inherit; }
   padding: 32px 24px;
   overflow-y: auto;
 }
-.tour__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.5px;
-}
-.tour__table th {
-  text-align: left;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent);
-  padding: 0 8px 12px 0;
-  letter-spacing: 1px;
-}
-.tour__table td {
-  padding: 12px 8px 12px 0;
-  border-top: 1px dashed var(--accent);
-  vertical-align: top;
-  line-height: 1.5;
-  color: var(--accent);
-}
-.tour__row-actions td {
-  border-top: none;
-  padding-top: 0;
-  padding-bottom: 20px;
-}
-.tour__actions { display: flex; gap: 8px; }
-
-/* placeholder for external Bands in Town widget */
 .tour__widget-slot {
   min-height: 60px;
+}
+
+/* ============================================================
+   BANDS IN TOWN WIDGET
+   — third-party markup, so overrides target its own class names
+     rather than our usual component conventions
+   ============================================================ */
+.tour__widget-slot .bit-widget {
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.bit-event {
+  border-bottom: 2px dotted var(--accent) !important;
+  border-top: none !important;
+}
+
+.bit-play-my-city-wrapper {
+  border-top: none !important;
+}
+
+.bit-button,
+.bit-rsvp,
+.bit-offers,
+.bit-follow-section-cta,
+.bit-play-my-city-cta,
+.bit-show-all-cta {
+  border: 2px dotted var(--accent) !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: var(--accent) !important;
+  box-sizing: border-box !important;
+}
+
+.bit-button *,
+.bit-rsvp *,
+.bit-offers *,
+.bit-follow-section-cta *,
+.bit-play-my-city-cta *,
+.bit-show-all-cta * {
+  color: var(--accent) !important;
+  text-transform: uppercase !important;
+}
+
+.bit-location,
+.bit-location * {
+  text-align: left !important;
+}
+
+.bit-play-my-city-wrapper,
+.bit-play-my-city-wrapper * {
+  text-align: center !important;
 }
 
 /* ============================================================
