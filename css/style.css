@@ -229,7 +229,9 @@ button { font-family: inherit; }
   position: relative;
   z-index: 1;
   margin-left: auto;
-  width: 380px;
+  max-width: 75%;
+  min-width: 700px;
+  width: 55%;
   height: 100%;
   padding: 32px 24px;
   overflow-y: auto;
@@ -891,6 +893,8 @@ html[lang="es"] .lang-es-only { display: block; }
     position: relative;
     margin-left: 0;
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     height: auto;
   }
 
