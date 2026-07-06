@@ -1,12 +1,12 @@
 /* ============================================================
    VIDEO DATA
-   NOTE: watchUrl is a placeholder ('#') until real video links
-   are supplied.
+   NOTE: "Como en el Idilio" has no confirmed YouTube link yet,
+   so its watchUrl is still a '#' placeholder.
    ============================================================ */
 const videos = [
   {
     year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'QUE LLUEVAN FLORES',
-    image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: '#', default: true,
+    image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c', default: true,
   },
   {
     year: '2025', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
@@ -14,15 +14,15 @@ const videos = [
   },
   {
     year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'INSENSATA',
-    image: 'assets/images/videos/insensata.jpg', watchUrl: '#',
+    image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
   },
   {
-    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'NO ES OTRA CANCIÓN',
-    image: 'assets/images/videos/no-es-otra-cancion.jpg', watchUrl: '#',
+    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'NO ES OTRA CANCIÓN ROMÁNTICA',
+    image: 'assets/images/videos/no-es-otra-cancion.jpg', watchUrl: 'https://www.youtube.com/watch?v=MN4BAlFQmJE',
   },
   {
     year: '2023', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'A CABALLO',
-    image: 'assets/images/videos/a-caballo.jpg', watchUrl: '#',
+    image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
   },
 ];
 
