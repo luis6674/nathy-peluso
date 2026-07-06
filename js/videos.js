@@ -1,16 +1,14 @@
 /* ============================================================
    VIDEO DATA
-   NOTE: "Como en el Idilio" has no confirmed YouTube link yet,
-   so its watchUrl is still a '#' placeholder.
    ============================================================ */
-const videos = [
+const baseVideos = [
   {
     year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'QUE LLUEVAN FLORES',
     image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c', default: true,
   },
   {
     year: '2025', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
-    image: 'assets/images/videos/como-en-el-idilio.jpg', watchUrl: '#',
+    image: 'assets/images/videos/como-en-el-idilio.jpg', watchUrl: 'https://www.youtube.com/watch?v=OYtHvS7n7ic',
   },
   {
     year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'INSENSATA',
@@ -25,6 +23,10 @@ const videos = [
     image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
   },
 ];
+
+// Only 5 real videos exist right now — repeated once to simulate a
+// fuller 10-item slider until more are supplied.
+const videos = [...baseVideos, ...baseVideos];
 
 const videosSlider   = document.getElementById('videosSlider');
 const videosBgImage  = document.getElementById('videosBgImage');
