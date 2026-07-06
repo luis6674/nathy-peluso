@@ -284,6 +284,40 @@ button { font-family: inherit; }
 }
 .modal-overlay.is-open { display: flex; }
 
+/* ============================================================
+   VIDEO PLAYER MODAL
+   ============================================================ */
+.video-modal {
+  position: relative;
+  width: min(90vw, 960px);
+}
+.video-modal__close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.video-modal__frame-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--black);
+}
+.video-modal__frame-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .join-card {
   background: var(--white);
   width: 100%;

@@ -71,7 +71,7 @@
           <div class="videos-slider" id="videosSlider">
             <!-- slider items injected by js/videos.js -->
           </div>
-          <a href="#" class="btn btn--outline-dashed videos-watch" id="videosWatch" target="_blank" rel="noopener" data-en="WATCH NOW" data-es="VER AHORA">WATCH NOW</a>
+          <a href="#" class="btn btn--outline-dashed videos-watch" id="videosWatch" data-en="WATCH NOW" data-es="VER AHORA">WATCH NOW</a>
         </div>
 
         <div class="videos-info">
@@ -96,6 +96,16 @@
       </div>
     </main>
 
+  </div>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="video-modal">
+      <button class="video-modal__close" id="videoModalClose" aria-label="Close">✕</button>
+      <div class="video-modal__frame-wrap">
+        <iframe id="videoModalFrame" src="" title="Video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
 
   <script src="js/main.js"></script>
