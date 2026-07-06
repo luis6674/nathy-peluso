@@ -429,6 +429,8 @@ button { font-family: inherit; }
   overflow-x: auto;
   padding: 40px 10vw;
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .slider::-webkit-scrollbar { display: none; }
 
@@ -540,8 +542,10 @@ html[lang="es"] .lang-es-only { display: block; }
   padding: 0 calc(50% - 130px);
   overflow-x: auto;
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
 }
-.videos-slider::-webkit-scrollbar { display: none; }
+.videos-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 .videos-slider__item {
   width: 260px;
   aspect-ratio: 16/9;
