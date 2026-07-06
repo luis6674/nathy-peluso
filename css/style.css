@@ -15,7 +15,6 @@
   --font-body:    Arial, Helvetica, sans-serif;
 
   --sidebar-w: 230px;
-  --ink: var(--black); /* neutral sidebar text (e.g. lang toggle) on light pages */
 }
 
 /* ============================================================
@@ -27,7 +26,7 @@
 .page--music    { --accent: var(--pink-light); --accent-contrast: var(--white); }
 .page--bio      { --accent: var(--blue);       --accent-contrast: var(--white); }
 .page--club-grasa { --accent: var(--coral);    --accent-contrast: var(--white); }
-.page--videos   { --accent: var(--white);      --accent-contrast: var(--black); --ink: var(--white); } /* dark theme, per Videos.jpg mockup — layout/content still pending */
+.page--videos   { --accent: var(--white);      --accent-contrast: var(--black); } /* dark theme, per Videos.jpg mockup — layout/content still pending */
 
 /* ============================================================
    RESET
@@ -140,7 +139,7 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--ink);
+  color: var(--accent);
   margin-bottom: auto;
 }
 .lang-toggle { display: flex; align-items: center; gap: 4px; cursor: pointer; }
