@@ -34,7 +34,11 @@ const videosInfoYear = document.getElementById('videosInfoYear');
 const videosInfoType = document.getElementById('videosInfoType');
 const videosInfoName = document.getElementById('videosInfoName');
 const videosWatch    = document.getElementById('videosWatch');
+const videoModal       = document.getElementById('videoModal');
+const videoModalFrame  = document.getElementById('videoModalFrame');
+const videoModalClose  = document.getElementById('videoModalClose');
 const currentLang = () => document.documentElement.lang || 'en';
+let currentVideoIndex = 0;
 
 videos.forEach((video, i) => {
   const item = document.createElement('div');
@@ -60,6 +64,7 @@ function updateVideoInfo(video) {
 }
 
 function setActiveVideo(index, scroll) {
+  currentVideoIndex = index;
   const items = videosSlider.querySelectorAll('.videos-slider__item');
   items.forEach(el => el.classList.remove('is-active'));
   const activeEl = items[index];
@@ -78,3 +83,40 @@ function setActiveVideo(index, scroll) {
 const initialVideoIndex = Math.max(videos.findIndex(v => v.default), 0);
 setActiveVideo(initialVideoIndex, false);
 window.addEventListener('load', () => setActiveVideo(initialVideoIndex, true));
+
+/* ============================================================
+   VIDEO PLAYER MODAL
+   ============================================================ */
+function youTubeIdFromUrl(url) {
+  try {
+    const parsed = new URL(url, window.location.href);
+    if (parsed.hostname.includes('youtu.be')) return parsed.pathname.slice(1);
+    return parsed.searchParams.get('v');
+  } catch {
+    return null;
+  }
+}
+
+function openVideoModal(url) {
+  const id = youTubeIdFromUrl(url);
+  if (!id) return;
+  videoModalFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+  videoModal.classList.add('is-open');
+}
+
+function closeVideoModal() {
+  videoModal.classList.remove('is-open');
+  videoModalFrame.src = '';
+}
+
+videosWatch.addEventListener('click', e => {
+  e.preventDefault();
+  openVideoModal(videos[currentVideoIndex].watchUrl);
+});
+videoModalClose.addEventListener('click', closeVideoModal);
+videoModal.addEventListener('click', e => {
+  if (e.target === videoModal) closeVideoModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeVideoModal();
+});
