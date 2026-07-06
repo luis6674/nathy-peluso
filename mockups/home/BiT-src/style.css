@@ -1,0 +1,70 @@
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+.page-background {
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #FFFF00;
+}
+
+.widget-container {
+  width: 100%;
+  background: transparent;
+}
+
+.widget-container .bit-widget {
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Separators */
+.bit-event {
+  border-bottom: 2px dotted #FF0289 !important;
+  border-top: none !important;
+}
+
+.bit-play-my-city-wrapper {
+  border-top: none !important;
+}
+
+/* All widget buttons */
+.bit-button,
+.bit-rsvp,
+.bit-offers,
+.bit-follow-section-cta,
+.bit-play-my-city-cta,
+.bit-show-all-cta {
+  border: 2px dotted #FF0289 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: #FF0289 !important;
+  box-sizing: border-box !important;
+}
+
+/* Button text */
+.bit-button *,
+.bit-rsvp *,
+.bit-offers *,
+.bit-follow-section-cta *,
+.bit-play-my-city-cta *,
+.bit-show-all-cta * {
+  color: #FF0289 !important;
+  text-transform: uppercase !important;
+}
+
+/* Location text styling only */
+.bit-location,
+.bit-location * {
+  text-align: left !important;
+}
+
+/* Play my city / show all: centered */
+.bit-play-my-city-wrapper,
+.bit-play-my-city-wrapper * {
+  text-align: center !important;
+}
