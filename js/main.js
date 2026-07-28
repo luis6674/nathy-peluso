@@ -71,8 +71,8 @@ langInputs.forEach(input => {
   input.addEventListener('change', () => applyLang(input.value));
 });
 
-const savedLang = localStorage.getItem(LANG_STORAGE_KEY);
-if (savedLang) applyLang(savedLang);
+const savedLang = localStorage.getItem(LANG_STORAGE_KEY) || 'es';
+applyLang(savedLang);
 
 /* ============================================================
    SCROLL UP
