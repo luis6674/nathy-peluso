@@ -3,16 +3,16 @@
    ============================================================ */
 const baseVideos = [
   {
-    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'QUE LLUEVAN FLORES',
-    image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c', default: true,
+    year: '2026', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
+    image: 'assets/images/videos/como-en-el-idilio.jpg', watchUrl: 'https://www.youtube.com/watch?v=OYtHvS7n7ic', default: true,
   },
   {
-    year: '2025', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
-    image: 'assets/images/videos/como-en-el-idilio.jpg', watchUrl: 'https://www.youtube.com/watch?v=OYtHvS7n7ic',
+    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'MALPORTADA',
+    image: 'assets/images/videos/malportada.jpg', watchUrl: 'https://www.youtube.com/watch?v=LxzDkFpWTW4',
   },
   {
-    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'INSENSATA',
-    image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
+    year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'ANGEL',
+    image: 'assets/images/videos/angel.jpg', watchUrl: 'https://www.youtube.com/watch?v=FRXaj-mqMg4',
   },
   {
     year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'NO ES OTRA CANCIÓN ROMÁNTICA',
@@ -22,11 +22,17 @@ const baseVideos = [
     year: '2023', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'A CABALLO',
     image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
   },
+  {
+    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'QUE LLUEVAN FLORES',
+    image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c',
+  },
+  {
+    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'INSENSATA',
+    image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
+  },
 ];
 
-// Only 5 real videos exist right now — repeated once to simulate a
-// fuller 10-item slider until more are supplied.
-const videos = [...baseVideos, ...baseVideos];
+const videos = baseVideos;
 
 const videosSlider   = document.getElementById('videosSlider');
 const videosBgImage  = document.getElementById('videosBgImage');
