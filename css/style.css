@@ -526,6 +526,7 @@ button { font-family: inherit; }
   max-width: 620px;
 }
 .bio-photo--top { margin-top: -40px; }
+.bio-photo + .bio-photo { margin-top: 6px; }
 
 .bio-text {
   max-width: 620px;
