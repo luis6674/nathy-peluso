@@ -55,6 +55,7 @@ document.addEventListener('keydown', e => {
    LANGUAGE SWITCHER
    ============================================================ */
 const langInputs = document.querySelectorAll('input[name="lang"]');
+const LANG_STORAGE_KEY = 'lang';
 
 function applyLang(lang) {
   document.documentElement.lang = lang;
@@ -62,11 +63,16 @@ function applyLang(lang) {
     el.dataset.en = el.dataset.en || el.textContent;
     el.textContent = el.dataset[lang] || el.dataset.en;
   });
+  localStorage.setItem(LANG_STORAGE_KEY, lang);
+  langInputs.forEach(input => { input.checked = input.value === lang; });
 }
 
 langInputs.forEach(input => {
   input.addEventListener('change', () => applyLang(input.value));
 });
+
+const savedLang = localStorage.getItem(LANG_STORAGE_KEY) || 'es';
+applyLang(savedLang);
 
 /* ============================================================
    SCROLL UP
