@@ -15,20 +15,8 @@ const baseVideos = [
     image: 'assets/images/videos/salvaje.jpg', watchUrl: 'https://www.youtube.com/watch?v=tPHpFWRGWO0',
   },
   {
-    year: '2023', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'A CABALLO',
-    image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
-  },
-  {
     year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'ENVIDIA',
     image: 'assets/images/videos/envidia.jpg', watchUrl: 'https://www.youtube.com/watch?v=27Ciie3mZj0',
-  },
-  {
-    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'NO ES OTRA CANCIÓN ROMÁNTICA',
-    image: 'assets/images/videos/no-es-otra-cancion.jpg', watchUrl: 'https://www.youtube.com/watch?v=MN4BAlFQmJE',
-  },
-  {
-    year: '2024', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'INSENSATA',
-    image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
   },
   {
     year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'EROTIKA',
@@ -43,8 +31,20 @@ const baseVideos = [
     image: 'assets/images/videos/angel.jpg', watchUrl: 'https://www.youtube.com/watch?v=FRXaj-mqMg4',
   },
   {
-    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'QUE LLUEVAN FLORES',
+    year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'NO ES OTRA CANCIÓN ROMÁNTICA',
+    image: 'assets/images/videos/no-es-otra-cancion.jpg', watchUrl: 'https://www.youtube.com/watch?v=MN4BAlFQmJE',
+  },
+  {
+    year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'A CABALLO',
+    image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
+  },
+  {
+    year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'QUE LLUEVAN FLORES',
     image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c',
+  },
+  {
+    year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'INSENSATA',
+    image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
   },
   {
     year: '2026', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
