@@ -485,7 +485,9 @@ button { font-family: inherit; }
   align-items: center;
   gap: 20px;
   overflow-x: auto;
-  padding: 40px 10vw;
+  /* enough side padding that even the first/last item can scroll to
+     true center once enlarged (half of the active 420px width) */
+  padding: 40px calc(50% - 210px);
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -901,7 +903,7 @@ html[lang="es"] .lang-es-only { display: block; }
 
   .music-content { padding-top: 56px; }
   .music-info { padding: 20px; width: 100%; margin-left: 0; }
-  .slider { padding: 20px 6vw; }
+  .slider { padding: 20px calc(50% - 110px); }
   .slider__item { width: 100px; }
   .slider__item.is-active { width: 220px; }
 
