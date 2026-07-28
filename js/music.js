@@ -1,32 +1,57 @@
 /* ============================================================
-   ALBUM / SINGLE DATA
-   NOTE: covers marked `placeholder: true` have no real artwork
-   yet — swap in assets/images/music/ once supplied.
+   ALBUM / SINGLE DATA — full discography, chronological order
+   NOTE: "Como en el Idilio" is dated 2026 per the Bio page copy
+   ("En febrero de 2026, Nathy Peluso..."), even though the source
+   file was named as if from Nov 2025 — flagging in case that's wrong.
    ============================================================ */
 const releases = [
   {
+    year: '2017', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'ESMERALDA',
+    image: 'assets/images/music/esmeralda.jpg', listenUrl: '#',
+  },
+  {
+    year: '2018', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'LA SANDUNGUERA',
+    image: 'assets/images/music/la-sandunguera.jpg', listenUrl: '#',
+  },
+  {
     year: '2020', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'CALAMBRE',
-    image: null, placeholder: true, listenUrl: '#',
+    image: 'assets/images/music/calambre.jpg', listenUrl: '#',
   },
   {
-    year: '2023', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'GRASA',
-    image: 'assets/images/music/grasa-album.jpg', listenUrl: '#',
+    year: '2021', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'MAFIOSA',
+    image: 'assets/images/music/mafiosa.jpg', listenUrl: '#',
   },
   {
-    year: '2024', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'EROTIKA',
+    year: '2021', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'VIVIR ASÍ',
+    image: 'assets/images/music/vivir-asi.jpg', listenUrl: '#',
+  },
+  {
+    year: '2024', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'GRASA',
+    image: 'assets/images/music/grasa.jpg', listenUrl: '#',
+  },
+  {
+    year: '2024', type: { en: 'EP', es: 'EP' }, name: 'CLUB GRASA',
+    image: 'assets/images/music/club-grasa.jpg', listenUrl: '#',
+  },
+  {
+    year: '2024', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'DE MARAVISHA',
+    image: 'assets/images/music/de-maravisha.jpg', listenUrl: '#',
+  },
+  {
+    year: '2025', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'EROTIKA',
     image: 'assets/images/music/erotika.png', listenUrl: '#',
   },
   {
     year: '2025', type: { en: 'EP', es: 'EP' }, name: 'MALPORTADA',
-    image: 'assets/images/music/malportada.png', listenUrl: '#', default: true,
+    image: 'assets/images/music/malportada.jpg', listenUrl: '#',
   },
   {
-    year: '2025', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'COMO EN EL IDILIO',
-    image: 'assets/images/music/como-en-el-idilio.png', listenUrl: '#',
+    year: '2026', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'COMO EN EL IDILIO',
+    image: 'assets/images/music/como-en-el-idilio.jpg', listenUrl: '#',
   },
   {
-    year: '2026', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'CLUB GRASA',
-    image: 'assets/images/music/club-grasa.png', listenUrl: '#',
+    year: '2026', type: { en: 'REMIX', es: 'REMIX' }, name: 'ANGEL (CLUB VERSION)',
+    image: 'assets/images/music/angel-remix.jpg', listenUrl: '#', default: true,
   },
 ];
 
@@ -78,7 +103,12 @@ function setActive(index, scroll) {
   activeEl.classList.add('is-active');
   updateInfoPanel(releases[index]);
   if (scroll) {
-    activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    // activeEl's width-grow is CSS-transitioned (see .slider__item.is-active),
+    // so its final centered position isn't known until that transition
+    // finishes — scrolling immediately would center the pre-grow size instead.
+    window.setTimeout(() => {
+      activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 360);
   }
 }
 
