@@ -23,7 +23,7 @@ const releases = [
   },
   {
     year: '2021', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'VIVIR ASÍ',
-    image: 'assets/images/music/vivir-asi.jpg', listenUrl: 'https://open.spotify.com/track/5Njv4Yxue5v1rB8x08lh6l',
+    image: 'assets/images/music/vivir-asi.jpg', listenUrl: 'https://open.spotify.com/album/3jHBdwS3nCuPC6lThrFJba',
   },
   {
     year: '2024', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'GRASA',
@@ -51,7 +51,7 @@ const releases = [
   },
   {
     year: '2026', type: { en: 'REMIX', es: 'REMIX' }, name: 'ANGEL (CLUB VERSION)',
-    image: 'assets/images/music/angel-remix.jpg', listenUrl: 'https://open.spotify.com/artist/3VHAySZQPlfGlNLslzXYpN', default: true,
+    image: 'assets/images/music/angel-remix.jpg', listenUrl: 'https://open.spotify.com/album/6qXCeSE5mvQZ1bcFjQIsB1', default: true,
   },
 ];
 
