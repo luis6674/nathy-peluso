@@ -601,8 +601,10 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 
 @media (max-width: 700px) {
-  .legal-trigger { bottom: 16px; left: 50px; }
-  .legal-footer { font-size: 10.5px; padding: 24px 20px 18px; }
+  .legal-trigger { bottom: 10px; left: 10px; }
+  .legal-footer { font-size: 11px; padding: 24px 20px 18px; }
+  .page--club-grasa .legal-trigger { left: unset; right: 10px; color: #FFF; }
+  .page--club-grasa .btn--outline-dashed { border-color: #FFF; }
 }
 
 /* ============================================================
@@ -932,11 +934,12 @@ html[lang="es"] .lang-es-only { display: block; }
   .bio-photo--top { margin-top: 0; }
   .bio-photo--bottom { margin-bottom: 0; }
   .bio-text { padding: 32px 0; font-size: 14px; }
+  .scroll-up { bottom: 10px; right: 10px; }
 
   .videos-content { padding-top: 56px; }
   .videos-slider { padding: 0 calc(50% - 80px); }
   .videos-slider__item { width: 160px; }
-  .videos-info { bottom: 16px; right: 16px; }
+  .videos-info { bottom: 46px; right: 16px; }
 
   .club-grasa-content { flex-direction: column; height: auto; min-height: 100svh; }
   .cg-left { height: 46vh; flex: none; padding-top: 56px; }
