@@ -111,6 +111,39 @@ setActiveVideo(initialVideoIndex, false);
 window.addEventListener('load', () => setActiveVideo(initialVideoIndex, true));
 
 /* ============================================================
+   SCROLL-DRIVEN SELECTION
+   While the user scrolls the slider by hand (touch/trackpad, not a
+   click), keep whichever item is nearest the container's center
+   selected — so it grows, the background/info update, and "WATCH
+   NOW" matches what's actually centered — without fighting the
+   user's scroll with our own scrollIntoView.
+   ============================================================ */
+let videoScrollSelectTimer = null;
+
+function getCenteredVideoIndex() {
+  const items = videosSlider.querySelectorAll('.videos-slider__item');
+  const containerCenter = videosSlider.getBoundingClientRect().left + videosSlider.clientWidth / 2;
+  let closestIndex = 0;
+  let closestDistance = Infinity;
+  items.forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    const distance = Math.abs(rect.left + rect.width / 2 - containerCenter);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = i;
+    }
+  });
+  return closestIndex;
+}
+
+videosSlider.addEventListener('scroll', () => {
+  clearTimeout(videoScrollSelectTimer);
+  videoScrollSelectTimer = window.setTimeout(() => {
+    setActiveVideo(getCenteredVideoIndex(), false);
+  }, 120);
+}, { passive: true });
+
+/* ============================================================
    VIDEO PLAYER MODAL
    ============================================================ */
 function youTubeIdFromUrl(url) {

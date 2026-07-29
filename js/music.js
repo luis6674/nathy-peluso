@@ -115,3 +115,35 @@ function setActive(index, scroll) {
 const initialIndex = Math.max(releases.findIndex(r => r.default), 0);
 setActive(initialIndex, false);
 window.addEventListener('load', () => setActive(initialIndex, true));
+
+/* ============================================================
+   SCROLL-DRIVEN SELECTION
+   While the user scrolls the slider by hand (touch/trackpad, not a
+   click), keep whichever item is nearest the container's center
+   selected — so it grows and its info panel updates — without
+   fighting the user's scroll with our own scrollIntoView.
+   ============================================================ */
+let scrollSelectTimer = null;
+
+function getCenteredIndex() {
+  const items = slider.querySelectorAll('.slider__item');
+  const containerCenter = slider.getBoundingClientRect().left + slider.clientWidth / 2;
+  let closestIndex = 0;
+  let closestDistance = Infinity;
+  items.forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    const distance = Math.abs(rect.left + rect.width / 2 - containerCenter);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = i;
+    }
+  });
+  return closestIndex;
+}
+
+slider.addEventListener('scroll', () => {
+  clearTimeout(scrollSelectTimer);
+  scrollSelectTimer = window.setTimeout(() => {
+    setActive(getCenteredIndex(), false);
+  }, 120);
+}, { passive: true });
