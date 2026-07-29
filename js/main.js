@@ -87,8 +87,8 @@ const LANG_STORAGE_KEY = 'lang';
 function applyLang(lang) {
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-es]').forEach(el => {
-    el.dataset.en = el.dataset.en || el.textContent;
-    el.textContent = el.dataset[lang] || el.dataset.en;
+    el.dataset.en = el.dataset.en || el.innerHTML;
+    el.innerHTML = el.dataset[lang] || el.dataset.en;
   });
   localStorage.setItem(LANG_STORAGE_KEY, lang);
   langInputs.forEach(input => { input.checked = input.value === lang; });
