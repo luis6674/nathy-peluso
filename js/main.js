@@ -52,6 +52,33 @@ document.addEventListener('keydown', e => {
 });
 
 /* ============================================================
+   LEGAL FOOTER
+   ============================================================ */
+const legalTrigger = document.getElementById('legalTrigger');
+const legalFooter  = document.getElementById('legalFooter');
+const legalClose   = document.getElementById('legalFooterClose');
+
+function openLegalFooter(e) {
+  if (e) e.preventDefault();
+  if (legalFooter) legalFooter.classList.add('is-open');
+}
+function closeLegalFooter() {
+  if (legalFooter) legalFooter.classList.remove('is-open');
+}
+
+if (legalTrigger) legalTrigger.addEventListener('click', openLegalFooter);
+if (legalClose) legalClose.addEventListener('click', closeLegalFooter);
+document.addEventListener('click', e => {
+  if (legalFooter && legalFooter.classList.contains('is-open') &&
+      !legalFooter.contains(e.target) && e.target !== legalTrigger) {
+    closeLegalFooter();
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLegalFooter();
+});
+
+/* ============================================================
    LANGUAGE SWITCHER
    ============================================================ */
 const langInputs = document.querySelectorAll('input[name="lang"]');
@@ -95,7 +122,7 @@ if (scrollUpBtn) {
    ============================================================ */
 const IDLE_MS = 6000;
 const SCROLL_PX_PER_MS = 0.03;
-const PAGE_SCROLL_SPEED_MULTIPLIER = 1.6; // whole-page fallback (e.g. Bio) covers more ground per screen
+const PAGE_SCROLL_SPEED_MULTIPLIER = 1.4; // whole-page fallback (e.g. Bio) covers more ground per screen
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lastInteraction = Date.now();
