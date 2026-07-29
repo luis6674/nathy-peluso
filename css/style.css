@@ -564,9 +564,10 @@ html[lang="es"] .lang-es-only { display: block; }
    ============================================================ */
 .legal-trigger {
   position: fixed;
-  bottom: 20px;
-  left: 50px;
+  bottom: 28px;
+  left: 56px;
   z-index: 60;
+  font-family: var(--font-body);
 }
 
 .legal-footer {
@@ -578,8 +579,8 @@ html[lang="es"] .lang-es-only { display: block; }
   padding: 20px 24px;
   transform: translateY(100%);
   transition: transform 0.3s ease;
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-body);
+  font-size: 12px;
   line-height: 1.6;
   letter-spacing: 0.3px;
   text-align: center;
