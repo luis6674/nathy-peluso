@@ -7,51 +7,51 @@
 const releases = [
   {
     year: '2017', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'ESMERALDA',
-    image: 'assets/images/music/esmeralda.jpg', listenUrl: '#',
+    image: 'assets/images/music/esmeralda.jpg', listenUrl: 'https://open.spotify.com/track/505pS73CWBrQPE811qppNw',
   },
   {
     year: '2018', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'LA SANDUNGUERA',
-    image: 'assets/images/music/la-sandunguera.jpg', listenUrl: '#',
+    image: 'assets/images/music/la-sandunguera.jpg', listenUrl: 'https://open.spotify.com/track/3xQ254OSkFQBk1F69d3Gwc',
   },
   {
     year: '2020', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'CALAMBRE',
-    image: 'assets/images/music/calambre.jpg', listenUrl: '#',
+    image: 'assets/images/music/calambre.jpg', listenUrl: 'https://open.spotify.com/album/0HvKhpJzjmC5wloza8MjXF',
   },
   {
     year: '2021', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'MAFIOSA',
-    image: 'assets/images/music/mafiosa.jpg', listenUrl: '#',
+    image: 'assets/images/music/mafiosa.jpg', listenUrl: 'https://open.spotify.com/track/1X1vW0xDpkOS35ZxcPqLv6',
   },
   {
     year: '2021', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'VIVIR ASÍ',
-    image: 'assets/images/music/vivir-asi.jpg', listenUrl: '#',
+    image: 'assets/images/music/vivir-asi.jpg', listenUrl: 'https://open.spotify.com/track/5Njv4Yxue5v1rB8x08lh6l',
   },
   {
     year: '2024', type: { en: 'ALBUM', es: 'ÁLBUM' }, name: 'GRASA',
-    image: 'assets/images/music/grasa.jpg', listenUrl: '#',
+    image: 'assets/images/music/grasa.jpg', listenUrl: 'https://open.spotify.com/album/2ab0PTJ5OG7I6YfSqpDFZv',
   },
   {
     year: '2024', type: { en: 'EP', es: 'EP' }, name: 'CLUB GRASA',
-    image: 'assets/images/music/club-grasa.jpg', listenUrl: '#',
+    image: 'assets/images/music/club-grasa.jpg', listenUrl: 'https://open.spotify.com/album/72bmHBiYWuPDOZ1GphH2IR',
   },
   {
     year: '2024', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'DE MARAVISHA',
-    image: 'assets/images/music/de-maravisha.jpg', listenUrl: '#',
+    image: 'assets/images/music/de-maravisha.jpg', listenUrl: 'https://open.spotify.com/track/20Its0iJ6nvKoKw3cY4ydD',
   },
   {
     year: '2025', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'EROTIKA',
-    image: 'assets/images/music/erotika.png', listenUrl: '#',
+    image: 'assets/images/music/erotika.png', listenUrl: 'https://nathypelusoes.lnk.to/EROTIKA',
   },
   {
     year: '2025', type: { en: 'EP', es: 'EP' }, name: 'MALPORTADA',
-    image: 'assets/images/music/malportada.jpg', listenUrl: '#',
+    image: 'assets/images/music/malportada.jpg', listenUrl: 'https://nathypelusoes.lnk.to/MALPORTADA',
   },
   {
     year: '2026', type: { en: 'SINGLE', es: 'SINGLE' }, name: 'COMO EN EL IDILIO',
-    image: 'assets/images/music/como-en-el-idilio.jpg', listenUrl: '#',
+    image: 'assets/images/music/como-en-el-idilio.jpg', listenUrl: 'https://sml.lnk.to/CEEI',
   },
   {
     year: '2026', type: { en: 'REMIX', es: 'REMIX' }, name: 'ANGEL (CLUB VERSION)',
-    image: 'assets/images/music/angel-remix.jpg', listenUrl: '#', default: true,
+    image: 'assets/images/music/angel-remix.jpg', listenUrl: 'https://open.spotify.com/artist/3VHAySZQPlfGlNLslzXYpN', default: true,
   },
 ];
 
