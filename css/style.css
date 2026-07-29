@@ -560,6 +560,54 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 
 /* ============================================================
+   LEGAL FOOTER (Copyright / legal links, hidden by default)
+   ============================================================ */
+.legal-trigger {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 60;
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-contrast);
+}
+
+.legal-footer {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 70;
+  background: var(--accent-contrast);
+  color: var(--accent);
+  padding: 20px 24px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.legal-footer.is-open { transform: translateY(0); }
+.legal-footer a { color: var(--accent); text-decoration: underline; }
+.legal-footer__close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media (max-width: 700px) {
+  .legal-trigger { bottom: 16px; left: 16px; }
+  .legal-footer { font-size: 10.5px; padding: 24px 20px 18px; }
+}
+
+/* ============================================================
    VIDEOS PAGE
    — full-bleed background image swaps per selected slider item
    ============================================================ */
