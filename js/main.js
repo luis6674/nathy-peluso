@@ -84,3 +84,49 @@ if (scrollUpBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+/* ============================================================
+   IDLE AUTO-SCROLL
+   After a period of no user interaction, slowly scroll whichever
+   vertical container is currently scrollable — the Club Grasa
+   active tab panel, the Home page tour column, or (falling back)
+   the page itself, as on Bio. Any interaction cancels it and
+   resets the idle timer.
+   ============================================================ */
+const IDLE_MS = 6000;
+const SCROLL_PX_PER_MS = 0.03;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lastInteraction = Date.now();
+let lastFrameTime = null;
+
+function markInteraction() { lastInteraction = Date.now(); }
+
+['mousemove', 'wheel', 'touchstart', 'keydown', 'mousedown'].forEach(evt => {
+  document.addEventListener(evt, markInteraction, { passive: true });
+});
+
+function getAutoScrollTarget() {
+  const candidates = [
+    document.querySelector('.cg-panel.is-active'),
+    document.getElementById('tour'),
+    document.scrollingElement,
+  ];
+  return candidates.find(el => el && el.scrollHeight > el.clientHeight) || null;
+}
+
+function autoScrollTick(now) {
+  requestAnimationFrame(autoScrollTick);
+  const dt = lastFrameTime ? now - lastFrameTime : 0;
+  lastFrameTime = now;
+
+  if (reduceMotion || Date.now() - lastInteraction < IDLE_MS) return;
+
+  const target = getAutoScrollTarget();
+  if (!target) return;
+
+  const atBottom = target.scrollTop + target.clientHeight >= target.scrollHeight - 1;
+  target.scrollTop = atBottom ? 0 : target.scrollTop + SCROLL_PX_PER_MS * dt;
+}
+
+if (!reduceMotion) requestAnimationFrame(autoScrollTick);
