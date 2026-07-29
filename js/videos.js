@@ -64,7 +64,7 @@ const videoModal       = document.getElementById('videoModal');
 const videoModalFrame  = document.getElementById('videoModalFrame');
 const videoModalClose  = document.getElementById('videoModalClose');
 const currentLang = () => document.documentElement.lang || 'en';
-let currentVideoIndex = 0;
+let currentVideoIndex = -1;
 
 videos.forEach((video, i) => {
   const item = document.createElement('div');
@@ -90,16 +90,19 @@ function updateVideoInfo(video) {
 }
 
 function setActiveVideo(index, scroll) {
+  const changed = index !== currentVideoIndex;
   currentVideoIndex = index;
   const items = videosSlider.querySelectorAll('.videos-slider__item');
   items.forEach(el => el.classList.remove('is-active'));
   const activeEl = items[index];
   activeEl.classList.add('is-active');
-  videosBgImage.style.opacity = 0;
-  window.setTimeout(() => {
-    videosBgImage.src = videos[index].image;
-    videosBgImage.style.opacity = 1;
-  }, 150);
+  if (changed) {
+    videosBgImage.style.opacity = 0;
+    window.setTimeout(() => {
+      videosBgImage.src = videos[index].image;
+      videosBgImage.style.opacity = 1;
+    }, 150);
+  }
   updateVideoInfo(videos[index]);
   if (scroll) {
     activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });

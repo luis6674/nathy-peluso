@@ -657,6 +657,11 @@ html[lang="es"] .lang-es-only { display: block; }
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* old Edge/IE */
+  /* sits inside a position:absolute full-viewport wrapper (unlike the
+     Music slider, which is in normal flow) — be explicit about touch
+     scrolling so iOS WebKit doesn't hand the gesture to an ancestor */
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 .videos-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 .videos-slider__item {
