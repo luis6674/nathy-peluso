@@ -769,48 +769,19 @@ html[lang="es"] .lang-es-only { display: block; }
 .cg-mix-item:last-child { border-bottom: 1px dashed rgba(255,255,255,0.35); }
 .cg-mix-item .btn--outline-dashed { color: var(--white); border-color: var(--white); flex-shrink: 0; }
 
+.cg-mix-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .cg-manifesto p {
   font-family: var(--font-body);
   font-size: 15.5px;
   line-height: 1.75;
   margin-bottom: 1.3em;
 }
-
-.cg-live-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.cg-live-thumb {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  margin-bottom: 8px;
-  background: rgba(0,0,0,0.2);
-}
-.cg-live-play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.25);
-  border: none;
-  color: var(--white);
-  font-size: 20px;
-  cursor: pointer;
-}
-.cg-live-caption {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.5px;
-  line-height: 1.4;
-}
-.cg-live-caption .btn--outline-dashed { color: var(--white); border-color: var(--white); flex-shrink: 0; }
 
 /* ============================================================
    PLACEHOLDER PAGES (content coming later)
@@ -925,5 +896,6 @@ html[lang="es"] .lang-es-only { display: block; }
   .cg-left { height: 46vh; flex: none; padding-top: 56px; }
   .cg-right { flex: none; padding: 24px 20px 40px; }
   .cg-tabs { flex-wrap: wrap; }
-  .cg-live-grid { grid-template-columns: 1fr; }
+  .cg-mix-item { flex-direction: column; align-items: flex-start; }
+  .cg-mix-links { justify-content: flex-start; }
 }
