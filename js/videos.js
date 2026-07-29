@@ -113,12 +113,14 @@ window.addEventListener('load', () => setActiveVideo(initialVideoIndex, true));
 /* ============================================================
    SCROLL-DRIVEN SELECTION
    While the user scrolls the slider by hand (touch/trackpad, not a
-   click), keep whichever item is nearest the container's center
-   selected — so it grows, the background/info update, and "WATCH
-   NOW" matches what's actually centered — without fighting the
-   user's scroll with our own scrollIntoView.
+   click), continuously keep whichever item is nearest the
+   container's center selected — so items grow, the background/info
+   update, and "WATCH NOW" tracks live as they pass through the
+   center, not just once scrolling stops. Throttled to one check per
+   animation frame (rather than a debounce) so it tracks in real time
+   without fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
-let videoScrollSelectTimer = null;
+let videoScrollSelectTicking = false;
 
 function getCenteredVideoIndex() {
   const items = videosSlider.querySelectorAll('.videos-slider__item');
@@ -137,10 +139,12 @@ function getCenteredVideoIndex() {
 }
 
 videosSlider.addEventListener('scroll', () => {
-  clearTimeout(videoScrollSelectTimer);
-  videoScrollSelectTimer = window.setTimeout(() => {
+  if (videoScrollSelectTicking) return;
+  videoScrollSelectTicking = true;
+  requestAnimationFrame(() => {
     setActiveVideo(getCenteredVideoIndex(), false);
-  }, 120);
+    videoScrollSelectTicking = false;
+  });
 }, { passive: true });
 
 /* ============================================================

@@ -119,11 +119,14 @@ window.addEventListener('load', () => setActive(initialIndex, true));
 /* ============================================================
    SCROLL-DRIVEN SELECTION
    While the user scrolls the slider by hand (touch/trackpad, not a
-   click), keep whichever item is nearest the container's center
-   selected — so it grows and its info panel updates — without
+   click), continuously keep whichever item is nearest the
+   container's center selected — so items grow and the info panel
+   updates live as they pass through the center, not just once
+   scrolling stops. Throttled to one check per animation frame
+   (rather than a debounce) so it tracks in real time without
    fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
-let scrollSelectTimer = null;
+let scrollSelectTicking = false;
 
 function getCenteredIndex() {
   const items = slider.querySelectorAll('.slider__item');
@@ -142,8 +145,10 @@ function getCenteredIndex() {
 }
 
 slider.addEventListener('scroll', () => {
-  clearTimeout(scrollSelectTimer);
-  scrollSelectTimer = window.setTimeout(() => {
+  if (scrollSelectTicking) return;
+  scrollSelectTicking = true;
+  requestAnimationFrame(() => {
     setActive(getCenteredIndex(), false);
-  }, 120);
+    scrollSelectTicking = false;
+  });
 }, { passive: true });
