@@ -95,7 +95,7 @@ if (scrollUpBtn) {
    ============================================================ */
 const IDLE_MS = 6000;
 const SCROLL_PX_PER_MS = 0.03;
-const PAGE_SCROLL_SPEED_MULTIPLIER = 1.6; // whole-page fallback (e.g. Bio) covers more ground per screen
+const PAGE_SCROLL_SPEED_MULTIPLIER = 1.4; // whole-page fallback (e.g. Bio) covers more ground per screen
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lastInteraction = Date.now();
