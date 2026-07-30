@@ -192,36 +192,30 @@ const joinMemberCount   = document.getElementById('joinMemberCount');
 
 /* ============================================================
    MEMBER COUNT
-   Uses countapi.xyz (free, no-auth, CORS-enabled) as the shared
-   counter, since this is a static site with no server/database of
-   our own. Starts at 2371 (this replaces an existing site with an
-   existing member base, so it shouldn't restart at 0/1) the first
-   time the counter namespace is ever touched, then increments once
-   per successful newsletter submission from then on.
+   Uses Abacus (abacus.jasoncameron.dev — free, no-auth,
+   CORS-enabled) as the shared counter, since this is a static site
+   with no server/database of our own. The raw remote counter just
+   starts at 0 like any fresh key — we add JOIN_COUNTER_OFFSET on
+   display instead of trying to seed the remote value to 2371,
+   since a "set it once" step would risk resetting a real count back
+   to 2371 on every load if it ever ran twice. Increments once per
+   successful newsletter submission.
    ============================================================ */
 const JOIN_COUNTER_NAMESPACE = 'nathypeluso-site';
 const JOIN_COUNTER_KEY = 'club-members';
-const JOIN_COUNTER_START = 2371;
+const JOIN_COUNTER_OFFSET = 2371;
 
-function displayMemberCount(value) {
-  if (typeof value === 'number') joinMemberCount.textContent = `Nº${value}`;
+function displayMemberCount(rawValue) {
+  if (typeof rawValue === 'number') joinMemberCount.textContent = `Nº${rawValue + JOIN_COUNTER_OFFSET}`;
 }
 
-fetch(`https://api.countapi.xyz/get/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
-  .then(res => {
-    if (!res.ok) throw new Error('not found');
-    return res.json();
-  })
+fetch(`https://abacus.jasoncameron.dev/get/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
+  .then(res => res.json())
   .then(data => displayMemberCount(data.value))
-  .catch(() => {
-    fetch(`https://api.countapi.xyz/create?namespace=${JOIN_COUNTER_NAMESPACE}&key=${JOIN_COUNTER_KEY}&value=${JOIN_COUNTER_START}`)
-      .then(res => res.json())
-      .then(data => displayMemberCount(data.value))
-      .catch(() => {});
-  });
+  .catch(() => {});
 
 function incrementMemberCount() {
-  return fetch(`https://api.countapi.xyz/hit/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
+  return fetch(`https://abacus.jasoncameron.dev/hit/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
     .then(res => res.json())
     .then(data => {
       displayMemberCount(data.value);
