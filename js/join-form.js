@@ -173,7 +173,6 @@ const JOIN_MODAL_HTML = `
 
     <div class="join-card__step join-card__step--response" id="joinResponse" hidden>
       <p data-en="Thanks for joining the club!!" data-es="¡Gracias por unirte al club!!">¡Gracias por unirte al club!!</p>
-      <p id="joinResponseMemberNumber"></p>
     </div>
   </div>
 </div>
@@ -190,7 +189,6 @@ const joinStepEmail     = document.getElementById('joinStepEmail');
 const newsletterForm    = document.getElementById('newsletter-form');
 const fieldEmailAddress = document.getElementById('field_email_address');
 const joinMemberCount   = document.getElementById('joinMemberCount');
-const joinResponseMemberNumber = document.getElementById('joinResponseMemberNumber');
 
 /* ============================================================
    MEMBER COUNT
@@ -377,11 +375,7 @@ newsletterForm.addEventListener('submit', e => {
       if (!res.ok) throw new Error('Request failed');
       joinStep2.hidden = true;
       joinResponse.hidden = false;
-      incrementMemberCount().then(value => {
-        if (typeof value === 'number') {
-          joinResponseMemberNumber.textContent = `Nº${value}`;
-        }
-      });
+      incrementMemberCount();
     })
     .catch(() => {
       alert('Ha ocurrido un error. Por favor, inténtalo más tarde.');
