@@ -213,7 +213,8 @@ function autoScrollTick(now) {
     ? SCROLL_PX_PER_MS * PAGE_SCROLL_SPEED_MULTIPLIER
     : SCROLL_PX_PER_MS;
   const atBottom = target.scrollTop + target.clientHeight >= target.scrollHeight - 1;
-  target.scrollTop = atBottom ? 0 : target.scrollTop + speed * dt;
+  if (atBottom) return;
+  target.scrollTop = target.scrollTop + speed * dt;
 }
 
 if (!reduceMotion) requestAnimationFrame(autoScrollTick);
