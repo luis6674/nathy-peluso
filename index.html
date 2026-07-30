@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/images/favicon-32.png" />
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@26.0.6/build/css/intlTelInput.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -123,45 +124,10 @@
         Copyright &copy; 2026 <a href="https://www.sonymusic.es/" target="_blank" rel="noopener">Sony Music Entertainment España S.L.</a><br>
         <a href="https://www.sonymusic.es/reservados-todos-los-derechos/" target="_blank" rel="noopener">Reservados todos los derechos</a> | <a href="https://www.sonymusic.es/politica-de-privacidad-y-cookies/" target="_blank" rel="noopener">Política de privacidad y cookies</a> | <a href="https://www.sonymusic.es/condiciones-generales" target="_blank" rel="noopener">Condiciones generales</a>
       </div>
-  </div>
-
-  <!-- JOIN THE CLUB MODAL -->
-  <div class="modal-overlay" id="joinModal">
-    <div class="join-card">
-      <button class="join-card__close" id="joinClose" aria-label="Close">✕</button>
-      <div class="join-card__label" data-en="UNITE A:" data-es="ÚNETE A:">UNITE A:</div>
-      <div class="join-card__logo">club<br />grasa</div>
-      <div class="join-card__member-row">
-        <span data-en="BECOME A" data-es="HAZTE">BECOME A</span>
-        <mark data-en="MEMBER" data-es="MIEMBRO">MEMBER</mark>
-        <span>Nº001</span>
-      </div>
-      <div class="join-card__photo">
-        <img src="assets/images/home/member-photo.jpg" alt="" />
-      </div>
-      <form class="join-card__form" onsubmit="return false;">
-        <div class="join-card__field">
-          <label for="joinName" data-en="Name:" data-es="Nombre:">Name:</label>
-          <input type="text" id="joinName" />
-        </div>
-        <div class="join-card__field">
-          <label for="joinEmail" data-en="Email:" data-es="Email:">Email:</label>
-          <input type="email" id="joinEmail" />
-        </div>
-        <div class="join-card__field">
-          <label for="joinCountry" data-en="Country:" data-es="País:">Country:</label>
-          <input type="text" id="joinCountry" />
-        </div>
-      </form>
-      <label class="join-card__terms">
-        <input type="checkbox" checked />
-        <span data-en="I accept the terms and privacy policy" data-es="Acepto los términos y la política de privacidad">I accept the terms and privacy policy</span>
-      </label>
-      <button type="submit" class="btn btn--black join-card__submit" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</button>
-    </div>
     </div>
   </div>
 
+  <script src="js/join-form.js"></script>
   <script src="js/main.js"></script>
   <script src="js/bandsintown.js"></script>
 </body>

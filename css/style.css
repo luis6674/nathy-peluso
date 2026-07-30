@@ -350,7 +350,11 @@ button { font-family: inherit; }
   max-width: 340px;
   padding: 22px 26px 28px;
   position: relative;
+  max-height: 86vh;
+  overflow-y: auto;
+  transition: max-width 0.3s ease;
 }
+.join-card--wide { max-width: 480px; }
 .join-card__close {
   position: absolute;
   top: 14px;
@@ -421,7 +425,8 @@ button { font-family: inherit; }
   text-transform: uppercase;
   color: var(--black);
 }
-.join-card__field input {
+.join-card__field input,
+.join-card__field select {
   font-family: var(--font-mono);
   font-size: 12px;
   border: none;
@@ -429,16 +434,52 @@ button { font-family: inherit; }
   padding: 4px 0;
   outline: none;
   background: transparent;
+  border-radius: 0;
+  width: 100%;
 }
-.join-card__terms {
+.join-card__field input.is-invalid,
+.join-card__field select.is-invalid { border-bottom-color: var(--coral); }
+
+.join-card__error {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--coral);
+}
+.join-card__error.is-visible { display: block; }
+
+.join-card__consent {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 10.5px;
+  line-height: 1.4;
   color: var(--black);
-  margin-bottom: 18px;
+  margin-bottom: 6px;
+  cursor: pointer;
 }
+.join-card__consent input { margin-top: 3px; flex-shrink: 0; }
+.join-card__consent input.is-invalid { outline: 1px solid var(--coral); }
+.join-card__consent a { color: inherit; }
+
+.join-card__hidden-checkbox { display: none; }
+
+.join-card__footnote {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--black);
+  opacity: 0.65;
+  margin: 4px 0 2px;
+}
+
+.join-card__step--response {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 30px 0;
+}
+
 .join-card__submit { width: 100%; text-align: center; }
 
 /* ============================================================
