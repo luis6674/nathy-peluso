@@ -249,6 +249,19 @@ function initJoinPhoneField() {
       loadUtils: () => import('https://cdn.jsdelivr.net/npm/intl-tel-input@26.0.6/build/js/utils.js'),
     });
     input.addEventListener('input', () => joinShowError(input, false));
+
+    // Auto-select the detected country in the Country field too, but
+    // only until the visitor has picked one themselves.
+    let countryFieldTouchedByUser = false;
+    const countrySelect = document.getElementById('field_country_region');
+    countrySelect.addEventListener('change', () => { countryFieldTouchedByUser = true; });
+    input.addEventListener('countrychange', () => {
+      if (countryFieldTouchedByUser) return;
+      const iso2 = joinIti.getSelectedCountryData().iso2;
+      if (!iso2) return;
+      const option = countrySelect.querySelector(`option[value="${iso2.toUpperCase()}"]`);
+      if (option) option.selected = true;
+    });
   });
 }
 
