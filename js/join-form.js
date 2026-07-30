@@ -93,7 +93,7 @@ const JOIN_MODAL_HTML = `
       <div class="join-card__member-row">
         <span data-en="BECOME A" data-es="HAZTE">BECOME A</span>
         <mark data-en="MEMBER" data-es="MIEMBRO">MEMBER</mark>
-        <span>Nº001</span>
+        <span id="joinMemberCount">Nº&hellip;</span>
       </div>
       <div class="join-card__photo">
         <img src="assets/images/home/member-photo.jpg" alt="" />
@@ -173,6 +173,7 @@ const JOIN_MODAL_HTML = `
 
     <div class="join-card__step join-card__step--response" id="joinResponse" hidden>
       <p data-en="Thanks for joining the club!!" data-es="¡Gracias por unirte al club!!">¡Gracias por unirte al club!!</p>
+      <p id="joinResponseMemberNumber"></p>
     </div>
   </div>
 </div>
@@ -188,6 +189,48 @@ const joinEmailForm     = document.getElementById('joinEmailForm');
 const joinStepEmail     = document.getElementById('joinStepEmail');
 const newsletterForm    = document.getElementById('newsletter-form');
 const fieldEmailAddress = document.getElementById('field_email_address');
+const joinMemberCount   = document.getElementById('joinMemberCount');
+const joinResponseMemberNumber = document.getElementById('joinResponseMemberNumber');
+
+/* ============================================================
+   MEMBER COUNT
+   Uses countapi.xyz (free, no-auth, CORS-enabled) as the shared
+   counter, since this is a static site with no server/database of
+   our own. Starts at 2371 (this replaces an existing site with an
+   existing member base, so it shouldn't restart at 0/1) the first
+   time the counter namespace is ever touched, then increments once
+   per successful newsletter submission from then on.
+   ============================================================ */
+const JOIN_COUNTER_NAMESPACE = 'nathypeluso-site';
+const JOIN_COUNTER_KEY = 'club-members';
+const JOIN_COUNTER_START = 2371;
+
+function displayMemberCount(value) {
+  if (typeof value === 'number') joinMemberCount.textContent = `Nº${value}`;
+}
+
+fetch(`https://api.countapi.xyz/get/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
+  .then(res => {
+    if (!res.ok) throw new Error('not found');
+    return res.json();
+  })
+  .then(data => displayMemberCount(data.value))
+  .catch(() => {
+    fetch(`https://api.countapi.xyz/create?namespace=${JOIN_COUNTER_NAMESPACE}&key=${JOIN_COUNTER_KEY}&value=${JOIN_COUNTER_START}`)
+      .then(res => res.json())
+      .then(data => displayMemberCount(data.value))
+      .catch(() => {});
+  });
+
+function incrementMemberCount() {
+  return fetch(`https://api.countapi.xyz/hit/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      displayMemberCount(data.value);
+      return data.value;
+    })
+    .catch(() => null);
+}
 
 function joinShowError(el, show) {
   const wrapper = el.closest('.join-card__field') || el.parentElement;
@@ -334,6 +377,11 @@ newsletterForm.addEventListener('submit', e => {
       if (!res.ok) throw new Error('Request failed');
       joinStep2.hidden = true;
       joinResponse.hidden = false;
+      incrementMemberCount().then(value => {
+        if (typeof value === 'number') {
+          joinResponseMemberNumber.textContent = `Nº${value}`;
+        }
+      });
     })
     .catch(() => {
       alert('Ha ocurrido un error. Por favor, inténtalo más tarde.');
