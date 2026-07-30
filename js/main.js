@@ -178,7 +178,7 @@ if (scrollUpBtn) {
    ============================================================ */
 const IDLE_MS = 6000;
 const SCROLL_PX_PER_MS = 0.03;
-const PAGE_SCROLL_SPEED_MULTIPLIER = 1.4; // whole-page fallback (e.g. Bio) covers more ground per screen
+const PAGE_SCROLL_SPEED_MULTIPLIER = 1.2; // whole-page fallback (e.g. Bio) covers more ground per screen
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lastInteraction = Date.now();
@@ -213,7 +213,8 @@ function autoScrollTick(now) {
     ? SCROLL_PX_PER_MS * PAGE_SCROLL_SPEED_MULTIPLIER
     : SCROLL_PX_PER_MS;
   const atBottom = target.scrollTop + target.clientHeight >= target.scrollHeight - 1;
-  target.scrollTop = atBottom ? 0 : target.scrollTop + speed * dt;
+  if (atBottom) return;
+  target.scrollTop = target.scrollTop + speed * dt;
 }
 
 if (!reduceMotion) requestAnimationFrame(autoScrollTick);
