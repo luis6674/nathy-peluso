@@ -206,7 +206,10 @@ const JOIN_COUNTER_KEY = 'club-members';
 const JOIN_COUNTER_OFFSET = 2371;
 
 function displayMemberCount(rawValue) {
-  if (typeof rawValue === 'number') joinMemberCount.textContent = `Nº${rawValue + JOIN_COUNTER_OFFSET}`;
+  // "Key not found" means nobody has hit the counter yet — that's
+  // the same as a raw count of 0.
+  const value = typeof rawValue === 'number' ? rawValue : 0;
+  joinMemberCount.textContent = `Nº${value + JOIN_COUNTER_OFFSET}`;
 }
 
 fetch(`https://abacus.jasoncameron.dev/get/${JOIN_COUNTER_NAMESPACE}/${JOIN_COUNTER_KEY}`)
