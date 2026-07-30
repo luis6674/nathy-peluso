@@ -19,7 +19,7 @@
 
     <!-- MOBILE TOPBAR -->
     <div class="mobile-topbar">
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -68,6 +68,7 @@
 
     <!-- MAIN CONTENT -->
     <main class="content">
+      <h1 class="sr-only">Nathy Peluso — Videos</h1>
       <div class="videos-content">
 
         <div class="videos-bg" id="videosBg">
@@ -85,9 +86,9 @@
           <table class="videos-info__table">
             <thead>
               <tr>
-                <th data-en="YEAR" data-es="AÑO">YEAR</th>
-                <th data-en="TYPE" data-es="TIPO">TYPE</th>
-                <th data-en="NAME" data-es="NOMBRE">NAME</th>
+                <th scope="col" data-en="YEAR" data-es="AÑO">YEAR</th>
+                <th scope="col" data-en="TYPE" data-es="TIPO">TYPE</th>
+                <th scope="col" data-en="NAME" data-es="NOMBRE">NAME</th>
               </tr>
             </thead>
             <tbody>
@@ -115,7 +116,7 @@
 
   <!-- VIDEO PLAYER MODAL -->
   <div class="modal-overlay" id="videoModal">
-    <div class="video-modal">
+    <div class="video-modal" role="dialog" aria-modal="true" aria-label="Video player" tabindex="-1">
       <button class="video-modal__close" id="videoModalClose" aria-label="Close">✕</button>
       <div class="video-modal__frame-wrap">
         <iframe id="videoModalFrame" src="" title="Video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>

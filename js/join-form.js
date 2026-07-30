@@ -84,7 +84,7 @@ function joinCountryOptionsHtml() {
 
 const JOIN_MODAL_HTML = `
 <div class="modal-overlay" id="joinModal">
-  <div class="join-card" id="joinCard">
+  <div class="join-card" id="joinCard" role="dialog" aria-modal="true" aria-label="Join the club" tabindex="-1">
     <button class="join-card__close" id="joinClose" aria-label="Close">✕</button>
 
     <div class="join-card__step join-card__step--1" id="joinStep1">
@@ -101,8 +101,8 @@ const JOIN_MODAL_HTML = `
       <form id="joinEmailForm" class="join-card__form" novalidate>
         <div class="join-card__field">
           <label for="joinStepEmail" data-en="Email:" data-es="Email:">Email:</label>
-          <input type="email" id="joinStepEmail" maxlength="60" required />
-          <div class="join-card__error" data-for="joinStepEmail" data-en="Please enter a valid email" data-es="Debes proporcionar un email válido"></div>
+          <input type="email" id="joinStepEmail" maxlength="60" required aria-describedby="err-joinStepEmail" aria-invalid="false" />
+          <div class="join-card__error" id="err-joinStepEmail" data-for="joinStepEmail" data-en="Please enter a valid email" data-es="Debes proporcionar un email válido"></div>
         </div>
         <button type="submit" class="btn btn--black join-card__submit" data-en="JOIN THE CLUB" data-es="ÚNETE AL CLUB">JOIN THE CLUB</button>
       </form>
@@ -115,47 +115,47 @@ const JOIN_MODAL_HTML = `
 
         <div class="join-card__field">
           <label for="field_email_address" data-en="Email:" data-es="Email:">Email:</label>
-          <input id="field_email_address" name="field_email_address" type="email" maxlength="60" required />
-          <div class="join-card__error" data-for="field_email_address" data-en="Please enter a valid email" data-es="Debes proporcionar un email válido"></div>
+          <input id="field_email_address" name="field_email_address" type="email" maxlength="60" required aria-describedby="err-field_email_address" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_email_address" data-for="field_email_address" data-en="Please enter a valid email" data-es="Debes proporcionar un email válido"></div>
         </div>
         <div class="join-card__field">
           <label for="field_first_name" data-en="First name:" data-es="Nombre:">First name:</label>
-          <input id="field_first_name" name="field_first_name" type="text" maxlength="30" required />
-          <div class="join-card__error" data-for="field_first_name" data-en="Enter your first name" data-es="Introduce tu nombre"></div>
+          <input id="field_first_name" name="field_first_name" type="text" maxlength="30" required aria-describedby="err-field_first_name" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_first_name" data-for="field_first_name" data-en="Enter your first name" data-es="Introduce tu nombre"></div>
         </div>
         <div class="join-card__field">
           <label for="field_last_name" data-en="Last name:" data-es="Apellidos:">Last name:</label>
-          <input id="field_last_name" name="field_last_name" type="text" maxlength="60" required />
-          <div class="join-card__error" data-for="field_last_name" data-en="Enter your last name" data-es="Introduce tus apellidos"></div>
+          <input id="field_last_name" name="field_last_name" type="text" maxlength="60" required aria-describedby="err-field_last_name" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_last_name" data-for="field_last_name" data-en="Enter your last name" data-es="Introduce tus apellidos"></div>
         </div>
         <div class="join-card__field">
           <label for="field_country_region" data-en="Country:" data-es="País:">Country:</label>
-          <select id="field_country_region" name="field_country_region" required>${joinCountryOptionsHtml()}</select>
-          <div class="join-card__error" data-for="field_country_region" data-en="Select your country" data-es="Selecciona tu país"></div>
+          <select id="field_country_region" name="field_country_region" required aria-describedby="err-field_country_region" aria-invalid="false">${joinCountryOptionsHtml()}</select>
+          <div class="join-card__error" id="err-field_country_region" data-for="field_country_region" data-en="Select your country" data-es="Selecciona tu país"></div>
         </div>
         <div class="join-card__field">
           <label for="field_dob" data-en="Date of birth:" data-es="Fecha de nacimiento:">Date of birth:</label>
-          <input id="field_dob" name="field_dob" type="date" required />
-          <div class="join-card__error" data-for="field_dob" data-en="Enter your date of birth" data-es="Introduce tu fecha de nacimiento"></div>
+          <input id="field_dob" name="field_dob" type="date" required aria-describedby="err-field_dob" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_dob" data-for="field_dob" data-en="Enter your date of birth" data-es="Introduce tu fecha de nacimiento"></div>
         </div>
         <div class="join-card__field">
           <label for="field_postal_code" data-en="Postal code:" data-es="Código postal:">Postal code:</label>
-          <input id="field_postal_code" name="field_postal_code" type="text" maxlength="20" required />
-          <div class="join-card__error" data-for="field_postal_code" data-en="Enter your postal code" data-es="Introduce tu código postal"></div>
+          <input id="field_postal_code" name="field_postal_code" type="text" maxlength="20" required aria-describedby="err-field_postal_code" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_postal_code" data-for="field_postal_code" data-en="Enter your postal code" data-es="Introduce tu código postal"></div>
         </div>
         <div class="join-card__field">
           <label for="phone" data-en="Mobile:" data-es="Móvil:">Mobile:</label>
-          <input id="phone" type="tel" required />
-          <div class="join-card__error" data-for="phone" data-en="Enter a valid mobile number" data-es="Introduce tu teléfono móvil"></div>
+          <input id="phone" type="tel" required aria-describedby="err-phone" aria-invalid="false" />
+          <div class="join-card__error" id="err-phone" data-for="phone" data-en="Enter a valid mobile number" data-es="Introduce tu teléfono móvil"></div>
         </div>
 
         <input type="checkbox" name="triggered_sends[]" id="confirmation_email" class="join-card__hidden-checkbox" checked value="">
         <input type="checkbox" name="triggered_sends[]" id="ts-for-ml-0" class="join-card__hidden-checkbox" value="">
         <label class="join-card__consent">
-          <input type="checkbox" class="join-card__mailing-list" id="mailing-list-id[0]" name="mailing-list-id[0]" value="a0S1p00000USoTNEA1" required>
+          <input type="checkbox" class="join-card__mailing-list" id="mailing-list-id[0]" name="mailing-list-id[0]" value="a0S1p00000USoTNEA1" required aria-describedby="err-mailing-list-id-0" aria-invalid="false">
           <span>He leído y acepo la <a href="https://www.sonymusic.es/politica-de-privacidad-y-cookies/" target="_blank" rel="noopener">Política de Privacidad</a> y, en consecuencia, deseo recibir información sobre <strong>Nathy Peluso</strong> a través de correo electrónico, SMS, Whatsapp u otros medios electrónicos. *</span>
         </label>
-        <div class="join-card__error" data-for="mailing-list-id[0]" data-en="You must accept to continue" data-es="Debes marcar la casilla para aceptar"></div>
+        <div class="join-card__error" id="err-mailing-list-id-0" data-for="mailing-list-id[0]" data-en="You must accept to continue" data-es="Debes marcar la casilla para aceptar"></div>
 
         <input type="checkbox" name="triggered_sends[]" id="ts-for-ml-1" class="join-card__hidden-checkbox" value="">
         <label class="join-card__consent">
@@ -192,6 +192,7 @@ function joinShowError(el, show) {
     || document.querySelector(`.join-card__error[data-for="${el.id}"]`);
   if (error) error.classList.toggle('is-visible', show);
   el.classList.toggle('is-invalid', show);
+  if (el.hasAttribute('aria-describedby')) el.setAttribute('aria-invalid', show ? 'true' : 'false');
 }
 
 function resetJoinModal() {

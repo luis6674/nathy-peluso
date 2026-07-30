@@ -19,7 +19,7 @@
 
     <!-- MOBILE TOPBAR -->
     <div class="mobile-topbar">
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -68,15 +68,16 @@
 
     <!-- MAIN CONTENT -->
     <main class="content">
+      <h1 class="sr-only">Nathy Peluso — Music</h1>
       <div class="music-content">
 
         <div class="music-info">
           <table class="music-info__table">
             <thead>
               <tr>
-                <th data-en="YEAR" data-es="AÑO">YEAR</th>
-                <th data-en="TYPE" data-es="TIPO">TYPE</th>
-                <th data-en="NAME" data-es="NOMBRE">NAME</th>
+                <th scope="col" data-en="YEAR" data-es="AÑO">YEAR</th>
+                <th scope="col" data-en="TYPE" data-es="TIPO">TYPE</th>
+                <th scope="col" data-en="NAME" data-es="NOMBRE">NAME</th>
               </tr>
             </thead>
             <tbody>
