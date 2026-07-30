@@ -149,7 +149,9 @@ const JOIN_MODAL_HTML = `
           <div class="join-card__error" id="err-phone" data-for="phone" data-en="Enter a valid mobile number" data-es="Introduce tu teléfono móvil"></div>
         </div>
 
+        <label for="confirmation_email" class="sr-only">Send confirmation email</label>
         <input type="checkbox" name="triggered_sends[]" id="confirmation_email" class="join-card__hidden-checkbox" checked value="">
+        <label for="ts-for-ml-0" class="sr-only">Nathy Peluso mailing list opt-in trigger</label>
         <input type="checkbox" name="triggered_sends[]" id="ts-for-ml-0" class="join-card__hidden-checkbox" value="">
         <label class="join-card__consent">
           <input type="checkbox" class="join-card__mailing-list" id="mailing-list-id[0]" name="mailing-list-id[0]" value="a0S1p00000USoTNEA1" required aria-describedby="err-mailing-list-id-0" aria-invalid="false">
@@ -157,6 +159,7 @@ const JOIN_MODAL_HTML = `
         </label>
         <div class="join-card__error" id="err-mailing-list-id-0" data-for="mailing-list-id[0]" data-en="You must accept to continue" data-es="Debes marcar la casilla para aceptar"></div>
 
+        <label for="ts-for-ml-1" class="sr-only">Sony Music mailing list opt-in trigger</label>
         <input type="checkbox" name="triggered_sends[]" id="ts-for-ml-1" class="join-card__hidden-checkbox" value="">
         <label class="join-card__consent">
           <input type="checkbox" class="join-card__mailing-list" id="mailing-list-id[1]" name="mailing-list-id[1]" value="a0S61000000ZYfcEAG">
