@@ -168,11 +168,14 @@ function openVideoModal(url) {
   if (!id) return;
   videoModalFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
   videoModal.classList.add('is-open');
+  const videoModalDialog = videoModal.querySelector('.video-modal');
+  if (videoModalDialog) a11yOpenModal(videoModalDialog);
 }
 
 function closeVideoModal() {
   videoModal.classList.remove('is-open');
   videoModalFrame.src = '';
+  a11yCloseModal();
 }
 
 videosWatch.addEventListener('click', e => {

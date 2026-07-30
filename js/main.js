@@ -1,4 +1,47 @@
 /* ============================================================
+   ACCESSIBLE MODAL HELPER
+   Traps Tab navigation inside a dialog-like container while it's
+   open, and restores focus to whatever triggered it once closed —
+   shared by the mobile sidebar, Join modal, and video player modal.
+   ============================================================ */
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+let a11yLastFocused = null;
+let a11yTrapCleanup = null;
+
+function a11yTrapFocus(container) {
+  function handleKeydown(e) {
+    if (e.key !== 'Tab') return;
+    const focusables = Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR)).filter(el => el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+  container.addEventListener('keydown', handleKeydown);
+  return () => container.removeEventListener('keydown', handleKeydown);
+}
+
+function a11yOpenModal(container) {
+  a11yLastFocused = document.activeElement;
+  a11yTrapCleanup = a11yTrapFocus(container);
+  window.setTimeout(() => {
+    const focusable = container.querySelector(FOCUSABLE_SELECTOR);
+    (focusable || container).focus();
+  }, 50);
+}
+
+function a11yCloseModal() {
+  if (a11yTrapCleanup) { a11yTrapCleanup(); a11yTrapCleanup = null; }
+  if (a11yLastFocused) { a11yLastFocused.focus(); a11yLastFocused = null; }
+}
+
+/* ============================================================
    MOBILE SIDEBAR TOGGLE
    ============================================================ */
 const hamburger   = document.getElementById('hamburger');
@@ -10,11 +53,19 @@ function openSidebar() {
   sidebar.classList.add('is-open');
   menuOverlay.classList.add('is-open');
   document.body.style.overflow = 'hidden';
+  sidebar.setAttribute('role', 'dialog');
+  sidebar.setAttribute('aria-modal', 'true');
+  if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+  a11yOpenModal(sidebar);
 }
 function closeSidebar() {
   sidebar.classList.remove('is-open');
   menuOverlay.classList.remove('is-open');
   document.body.style.overflow = '';
+  sidebar.removeAttribute('role');
+  sidebar.removeAttribute('aria-modal');
+  if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  a11yCloseModal();
 }
 
 if (hamburger) hamburger.addEventListener('click', openSidebar);
@@ -34,10 +85,15 @@ const joinClose   = document.getElementById('joinClose');
 
 function openJoinModal(e) {
   if (e) e.preventDefault();
-  if (joinModal) joinModal.classList.add('is-open');
+  if (!joinModal) return;
+  joinModal.classList.add('is-open');
+  const joinCard = document.getElementById('joinCard');
+  if (joinCard) a11yOpenModal(joinCard);
 }
 function closeJoinModal() {
-  if (joinModal) joinModal.classList.remove('is-open');
+  if (!joinModal) return;
+  joinModal.classList.remove('is-open');
+  a11yCloseModal();
 }
 
 if (joinTrigger) joinTrigger.addEventListener('click', openJoinModal);
