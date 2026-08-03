@@ -574,6 +574,7 @@ button { font-family: inherit; }
   overflow: hidden;
 }
 .slider__item img { width: 100%; height: 100%; object-fit: cover; }
+.slider__item--no-transition { transition: none !important; }
 .slider__item.is-active {
   width: 420px;
   opacity: 1;
