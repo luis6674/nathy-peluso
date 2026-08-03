@@ -89,7 +89,7 @@ function updateVideoInfo(video) {
   videosWatch.href = video.watchUrl;
 }
 
-function setActiveVideo(index, scroll) {
+function setActiveVideo(index, scroll, behavior) {
   const changed = index !== currentVideoIndex;
   currentVideoIndex = index;
   const items = videosSlider.querySelectorAll('.videos-slider__item');
@@ -105,13 +105,22 @@ function setActiveVideo(index, scroll) {
   }
   updateVideoInfo(videos[index]);
   if (scroll) {
-    activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    activeEl.scrollIntoView({ behavior: behavior || 'smooth', inline: 'center', block: 'nearest' });
   }
 }
 
 const initialVideoIndex = Math.max(videos.findIndex(v => v.default), 0);
 setActiveVideo(initialVideoIndex, false);
-window.addEventListener('load', () => setActiveVideo(initialVideoIndex, true));
+// Jump straight to the default item on load — no smooth glide across
+// every item in between, which looked like an unwanted extra step.
+// Scroll-driven selection is suppressed for a moment afterward so it
+// doesn't react to the layout still settling (width-grow transition)
+// and briefly flip to a neighboring item.
+window.addEventListener('load', () => {
+  suppressVideoScrollSelect = true;
+  setActiveVideo(initialVideoIndex, true, 'auto');
+  window.setTimeout(() => { suppressVideoScrollSelect = false; }, 500);
+});
 
 /* ============================================================
    SCROLL-DRIVEN SELECTION
@@ -124,6 +133,7 @@ window.addEventListener('load', () => setActiveVideo(initialVideoIndex, true));
    without fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
 let videoScrollSelectTicking = false;
+let suppressVideoScrollSelect = false;
 
 function getCenteredVideoIndex() {
   const items = videosSlider.querySelectorAll('.videos-slider__item');
@@ -142,7 +152,7 @@ function getCenteredVideoIndex() {
 }
 
 videosSlider.addEventListener('scroll', () => {
-  if (videoScrollSelectTicking) return;
+  if (suppressVideoScrollSelect || videoScrollSelectTicking) return;
   videoScrollSelectTicking = true;
   requestAnimationFrame(() => {
     setActiveVideo(getCenteredVideoIndex(), false);
