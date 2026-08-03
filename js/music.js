@@ -96,7 +96,7 @@ function updateInfoPanel(release) {
   musicInfoListen.href = release.listenUrl;
 }
 
-function setActive(index, scroll) {
+function setActive(index, scroll, behavior) {
   const items = slider.querySelectorAll('.slider__item');
   items.forEach(el => el.classList.remove('is-active'));
   const activeEl = items[index];
@@ -107,14 +107,25 @@ function setActive(index, scroll) {
     // so its final centered position isn't known until that transition
     // finishes — scrolling immediately would center the pre-grow size instead.
     window.setTimeout(() => {
-      activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      activeEl.scrollIntoView({ behavior: behavior || 'smooth', inline: 'center', block: 'nearest' });
     }, 360);
   }
 }
 
 const initialIndex = Math.max(releases.findIndex(r => r.default), 0);
 setActive(initialIndex, false);
-window.addEventListener('load', () => setActive(initialIndex, true));
+// Jump straight to the default item on load — no smooth glide across
+// every item in between, which looked like an unwanted extra step.
+// Scroll-driven selection is suppressed for a moment afterward so it
+// doesn't react to the layout still settling (width-grow transition)
+// and briefly flip to a neighboring item.
+window.addEventListener('load', () => {
+  suppressScrollSelect = true;
+  setActive(initialIndex, true, 'auto');
+  // setActive's own scroll happens after a 360ms delay (waiting for
+  // the width-grow transition) — suppression must outlast that too.
+  window.setTimeout(() => { suppressScrollSelect = false; }, 900);
+});
 
 /* ============================================================
    SCROLL-DRIVEN SELECTION
@@ -127,6 +138,7 @@ window.addEventListener('load', () => setActive(initialIndex, true));
    fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
 let scrollSelectTicking = false;
+let suppressScrollSelect = false;
 
 function getCenteredIndex() {
   const items = slider.querySelectorAll('.slider__item');
@@ -145,7 +157,7 @@ function getCenteredIndex() {
 }
 
 slider.addEventListener('scroll', () => {
-  if (scrollSelectTicking) return;
+  if (suppressScrollSelect || scrollSelectTicking) return;
   scrollSelectTicking = true;
   requestAnimationFrame(() => {
     setActive(getCenteredIndex(), false);
