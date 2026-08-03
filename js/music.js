@@ -112,20 +112,21 @@ function setActive(index, scroll, behavior) {
   }
 }
 
+let suppressScrollSelect = false;
+
 const initialIndex = Math.max(releases.findIndex(r => r.default), 0);
-setActive(initialIndex, false);
-// Jump straight to the default item on load — no smooth glide across
-// every item in between, which looked like an unwanted extra step.
-// Scroll-driven selection is suppressed for a moment afterward so it
-// doesn't react to the layout still settling (width-grow transition)
-// and briefly flip to a neighboring item.
-window.addEventListener('load', () => {
-  suppressScrollSelect = true;
-  setActive(initialIndex, true, 'auto');
-  // setActive's own scroll happens after a 360ms delay (waiting for
-  // the width-grow transition) — suppression must outlast that too.
-  window.setTimeout(() => { suppressScrollSelect = false; }, 900);
-});
+// Jump straight to the default item immediately — no smooth glide
+// across every item in between, which looked like an unwanted extra
+// step. Slider items have fixed CSS dimensions (aspect-ratio), so
+// there's no need to wait for window 'load' (i.e. every image on the
+// page finishing download, which can take a visible moment) before
+// positioning it — that wait was itself the cause of briefly seeing
+// the slider at its default left-scrolled position first.
+suppressScrollSelect = true;
+setActive(initialIndex, true, 'auto');
+// setActive's own scroll happens after a 360ms delay (waiting for
+// the width-grow transition) — suppression must outlast that too.
+window.setTimeout(() => { suppressScrollSelect = false; }, 900);
 
 /* ============================================================
    SCROLL-DRIVEN SELECTION
@@ -138,7 +139,6 @@ window.addEventListener('load', () => {
    fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
 let scrollSelectTicking = false;
-let suppressScrollSelect = false;
 
 function getCenteredIndex() {
   const items = slider.querySelectorAll('.slider__item');

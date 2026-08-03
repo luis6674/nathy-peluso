@@ -109,18 +109,19 @@ function setActiveVideo(index, scroll, behavior) {
   }
 }
 
+let suppressVideoScrollSelect = false;
+
 const initialVideoIndex = Math.max(videos.findIndex(v => v.default), 0);
-setActiveVideo(initialVideoIndex, false);
-// Jump straight to the default item on load — no smooth glide across
-// every item in between, which looked like an unwanted extra step.
-// Scroll-driven selection is suppressed for a moment afterward so it
-// doesn't react to the layout still settling (width-grow transition)
-// and briefly flip to a neighboring item.
-window.addEventListener('load', () => {
-  suppressVideoScrollSelect = true;
-  setActiveVideo(initialVideoIndex, true, 'auto');
-  window.setTimeout(() => { suppressVideoScrollSelect = false; }, 500);
-});
+// Jump straight to the default item immediately — no smooth glide
+// across every item in between, which looked like an unwanted extra
+// step. Slider items have fixed CSS dimensions (aspect-ratio), so
+// there's no need to wait for window 'load' (i.e. every image on the
+// page finishing download, which can take a visible moment) before
+// positioning it — that wait was itself the cause of briefly seeing
+// the slider at its default left-scrolled position first.
+suppressVideoScrollSelect = true;
+setActiveVideo(initialVideoIndex, true, 'auto');
+window.setTimeout(() => { suppressVideoScrollSelect = false; }, 500);
 
 /* ============================================================
    SCROLL-DRIVEN SELECTION
@@ -133,7 +134,6 @@ window.addEventListener('load', () => {
    without fighting the user's scroll with our own scrollIntoView.
    ============================================================ */
 let videoScrollSelectTicking = false;
-let suppressVideoScrollSelect = false;
 
 function getCenteredVideoIndex() {
   const items = videosSlider.querySelectorAll('.videos-slider__item');
