@@ -96,10 +96,36 @@ function updateInfoPanel(release) {
   musicInfoListen.href = release.listenUrl;
 }
 
-function setActive(index, scroll, behavior) {
+function setActive(index, scroll, behavior, instant) {
   const items = slider.querySelectorAll('.slider__item');
   items.forEach(el => el.classList.remove('is-active'));
   const activeEl = items[index];
+
+  if (instant) {
+    // Skip the width-grow animation entirely for the initial load
+    // positioning: apply the grown size instantly (no transition),
+    // so we can scroll to the correct spot immediately instead of
+    // waiting ~360ms — during which the browser would otherwise still
+    // be showing the un-scrolled (left/oldest) position.
+    activeEl.classList.add('slider__item--no-transition');
+    activeEl.classList.add('is-active');
+    activeEl.offsetHeight; // force reflow so the new width applies now
+    updateInfoPanel(releases[index]);
+    if (scroll) {
+      // .slider has `scroll-behavior: smooth` in CSS — per spec,
+      // behavior:'auto' doesn't force instant, it defers to that CSS
+      // setting, so it would still animate. Override it directly on
+      // the element to guarantee a true instant jump, then restore it
+      // so later user/click-driven scrolls stay smooth.
+      const previousScrollBehavior = slider.style.scrollBehavior;
+      slider.style.scrollBehavior = 'auto';
+      activeEl.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+      slider.style.scrollBehavior = previousScrollBehavior;
+    }
+    requestAnimationFrame(() => activeEl.classList.remove('slider__item--no-transition'));
+    return;
+  }
+
   activeEl.classList.add('is-active');
   updateInfoPanel(releases[index]);
   if (scroll) {
@@ -115,18 +141,13 @@ function setActive(index, scroll, behavior) {
 let suppressScrollSelect = false;
 
 const initialIndex = Math.max(releases.findIndex(r => r.default), 0);
-// Jump straight to the default item immediately — no smooth glide
-// across every item in between, which looked like an unwanted extra
-// step. Slider items have fixed CSS dimensions (aspect-ratio), so
-// there's no need to wait for window 'load' (i.e. every image on the
-// page finishing download, which can take a visible moment) before
-// positioning it — that wait was itself the cause of briefly seeing
-// the slider at its default left-scrolled position first.
+// Jump straight to the default item immediately (instant = true skips
+// the width-grow animation and its ~360ms pre-scroll delay entirely)
+// — no smooth glide across every item in between, and no window
+// where the slider still shows its default left-scrolled position.
 suppressScrollSelect = true;
-setActive(initialIndex, true, 'auto');
-// setActive's own scroll happens after a 360ms delay (waiting for
-// the width-grow transition) — suppression must outlast that too.
-window.setTimeout(() => { suppressScrollSelect = false; }, 900);
+setActive(initialIndex, true, 'auto', true);
+window.setTimeout(() => { suppressScrollSelect = false; }, 300);
 
 /* ============================================================
    SCROLL-DRIVEN SELECTION
