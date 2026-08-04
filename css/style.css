@@ -613,22 +613,28 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
-.bio-reveal-frame {
+.bio-reveal-group {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   overflow: hidden;
 }
-.bio-reveal-frame > img {
+.bio-reveal-group .bio-photo > img {
   display: block;
   width: 100%;
   height: auto;
 }
 .bio-reveal-curtain {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, var(--white) 0%, var(--white) calc(100% - 110px), transparent 100%);
-  transform: translateY(0);
-  animation: bioCurtainReveal 2.2s ease-in-out forwards;
-  animation-delay: var(--reveal-delay, 0ms);
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(100% + 110px);
+  transform: translateY(-110px);
+  background: linear-gradient(to bottom, transparent 0, var(--white) 110px, var(--white) 100%);
+  animation: bioCurtainReveal 3.6s ease-in-out forwards;
   pointer-events: none;
 }
 @keyframes bioCurtainReveal {
