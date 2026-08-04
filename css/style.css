@@ -613,6 +613,19 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
+.reveal-img {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal-img.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-img { opacity: 1; transform: none; transition: none; }
+}
+
 @property --reveal {
   syntax: '<percentage>';
   inherits: false;
