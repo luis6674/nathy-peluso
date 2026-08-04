@@ -613,6 +613,37 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
+.bio-photo {
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out;
+  will-change: transform, opacity;
+}
+.bio-photo.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-char {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.reveal-char.is-revealed {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-photo {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+  .reveal-char {
+    opacity: 1;
+    transition: none;
+  }
+}
+
 /* shown only when Spanish is selected — e.g. paragraphs with no
    English translation supplied yet */
 .lang-es-only { display: none; }
