@@ -613,6 +613,19 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
+.reveal-p {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal-p.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-p { opacity: 1; transform: none; transition: none; }
+}
+
 .bio-reveal-group {
   position: relative;
   display: flex;
