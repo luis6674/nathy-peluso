@@ -398,11 +398,14 @@ button { font-family: inherit; }
   margin-bottom: 4px;
 }
 .join-card__logo {
-  font-family: var(--font-display);
-  font-size: 38px;
-  line-height: 0.85;
-  text-transform: lowercase;
-  color: var(--black);
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  /* the source asset is white halftone dots (built for the black
+     Club Grasa video background) — invert it to match the mockup's
+     dark-on-white look here */
+  filter: invert(1);
   margin-bottom: 16px;
 }
 .join-card__member-row {
