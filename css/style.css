@@ -905,6 +905,34 @@ html[lang="es"] .lang-es-only { display: block; }
   margin-bottom: 1.3em;
 }
 
+/* large opening/closing quote marks make it clear this is Nathy
+   speaking, without baking literal quote characters into the
+   translated text itself */
+.cg-manifesto--quoted {
+  position: relative;
+  padding-left: 34px;
+}
+.cg-manifesto--quoted p:first-of-type::before,
+.cg-manifesto--quoted p:last-of-type::after {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 0;
+  color: var(--white);
+  opacity: 0.6;
+}
+.cg-manifesto--quoted p:first-of-type::before {
+  content: '\201C';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+}
+.cg-manifesto--quoted p:last-of-type::after {
+  content: '\201D';
+  display: inline-block;
+  vertical-align: -0.35em;
+  margin-left: 2px;
+}
+
 /* ============================================================
    PLACEHOLDER PAGES (content coming later)
    ============================================================ */
