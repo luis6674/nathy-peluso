@@ -613,35 +613,21 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
-.bio-photo {
-  transform: translateY(60px);
-  opacity: 0;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out;
-  will-change: transform, opacity;
+.bio-fade {
+  position: fixed;
+  left: var(--sidebar-w);
+  right: 0;
+  height: 110px;
+  pointer-events: none;
+  z-index: 10;
 }
-.bio-photo.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
+.bio-fade--top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--white) 0%, transparent 100%);
 }
-
-.reveal-char {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-.reveal-char.is-revealed {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bio-photo {
-    transform: none;
-    opacity: 1;
-    transition: none;
-  }
-  .reveal-char {
-    opacity: 1;
-    transition: none;
-  }
+.bio-fade--bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--white) 0%, transparent 100%);
 }
 
 /* shown only when Spanish is selected — e.g. paragraphs with no
@@ -1085,6 +1071,8 @@ html[lang="es"] .lang-es-only { display: block; }
   .bio-photo--top { margin-top: 0; }
   .bio-photo--bottom { margin-bottom: 0; }
   .bio-text { padding: 32px 0; font-size: 14px; }
+  .bio-fade { left: 0; height: 70px; }
+  .bio-fade--top { top: 56px; }
   .scroll-up { bottom: 10px; right: 10px; }
 
   .videos-content { padding-top: 56px; }
