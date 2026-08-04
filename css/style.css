@@ -914,8 +914,9 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 .cg-manifesto--quoted p:first-of-type::before,
 .cg-manifesto--quoted p:last-of-type::after {
-  font-family: var(--font-display);
-  font-size: 48px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 34px;
   line-height: 0;
   color: var(--white);
   opacity: 0.6;
@@ -924,12 +925,12 @@ html[lang="es"] .lang-es-only { display: block; }
   content: '\201C';
   position: absolute;
   left: 0;
-  top: 0.45em;
+  top: 0.5em;
 }
 .cg-manifesto--quoted p:last-of-type::after {
   content: '\201D';
   display: inline-block;
-  vertical-align: -0.35em;
+  vertical-align: -0.25em;
   margin-left: 2px;
 }
 
