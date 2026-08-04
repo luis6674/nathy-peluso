@@ -613,17 +613,15 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
-.reveal-p {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal-p.is-in {
-  opacity: 1;
-  transform: translateY(0);
+.bio-word { display: inline-block; }
+.bio-line {
+  display: block;
+  --reveal: 0%;
+  -webkit-mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
+  mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal-p { opacity: 1; transform: none; transition: none; }
+  .bio-line { -webkit-mask-image: none; mask-image: none; }
 }
 
 .bio-reveal-group {
