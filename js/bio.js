@@ -1,12 +1,18 @@
-/* Bio page — lines reveal left-to-right as they clear the bottom fade band */
+/* Bio page — lines type in left-to-right, one after another, once a
+   paragraph crosses a trigger point near the bottom fade band. Timing is
+   fixed (CSS transition), not tied to scroll speed/position. */
 (function () {
   var FADE_BAND = 110; // matches --bio-fade height in css/style.css
+  var LINE_STEP = 450; // ms between each line's reveal start (matches transition duration, back-to-back)
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var paragraphs = Array.prototype.slice.call(document.querySelectorAll('.reveal-p'));
 
-  if (reduceMotion || !paragraphs.length) return;
+  if (!paragraphs.length) return;
 
-  var allLines = [];
+  if (reduceMotion) {
+    paragraphs.forEach(function (p) { p.querySelectorAll('.bio-line').forEach(function (l) { l.classList.add('is-revealed'); }); });
+    return;
+  }
 
   function splitIntoLines(p) {
     var text = p.textContent.trim().replace(/\s+/g, ' ');
@@ -35,9 +41,10 @@
     });
 
     p.innerHTML = '';
-    return groups.map(function (group) {
+    return groups.map(function (group, i) {
       var line = document.createElement('span');
       line.className = 'bio-line';
+      line.style.transitionDelay = (i * LINE_STEP) + 'ms';
       group.forEach(function (entry) {
         line.appendChild(entry.span);
         if (entry.space) line.appendChild(entry.space);
@@ -47,59 +54,42 @@
     });
   }
 
-  function rebuildLines() {
-    allLines = [];
-    paragraphs.forEach(function (p) {
-      allLines = allLines.concat(splitIntoLines(p));
-    });
-  }
-
-  function update() {
-    var vh = window.innerHeight;
-    allLines.forEach(function (line) {
-      var rect = line.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > vh) return;
-      var progress = (vh - rect.top) / FADE_BAND;
-      progress = Math.max(0, Math.min(1, progress));
-      line.style.setProperty('--reveal', (progress * 100) + '%');
-    });
-    ticking = false;
-  }
-
-  var ticking = false;
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
+  function rebuild(p) {
+    var lines = splitIntoLines(p);
+    if (p.dataset.revealed === 'true') {
+      lines.forEach(function (l) { l.style.transitionDelay = '0ms'; l.classList.add('is-revealed'); });
     }
+    return lines;
   }
 
-  rebuildLines();
-  update();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  paragraphs.forEach(function (p) { rebuild(p); });
 
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(function () {
-      rebuildLines();
-      update();
+  var observer = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var p = entry.target;
+        p.dataset.revealed = 'true';
+        p.querySelectorAll('.bio-line').forEach(function (line) { line.classList.add('is-revealed'); });
+        obs.unobserve(p);
+      }
     });
-  }
+  }, { threshold: 0, rootMargin: '0px 0px -' + FADE_BAND + 'px 0px' });
+
+  paragraphs.forEach(function (p) { observer.observe(p); });
 
   var resizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      rebuildLines();
-      update();
-    }, 200);
+    resizeTimer = setTimeout(function () { paragraphs.forEach(rebuild); }, 200);
   });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { paragraphs.forEach(rebuild); });
+  }
 
   document.querySelectorAll('input[name="lang"]').forEach(function (input) {
     input.addEventListener('change', function () {
-      setTimeout(function () {
-        rebuildLines();
-        update();
-      }, 0);
+      setTimeout(function () { paragraphs.forEach(rebuild); }, 0);
     });
   });
 })();

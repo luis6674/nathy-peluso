@@ -613,13 +613,21 @@ button { font-family: inherit; }
 }
 .bio-text p + p { margin-top: 1.4em; }
 
+@property --reveal {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
 .bio-word { display: inline-block; }
 .bio-line {
   display: block;
   --reveal: 0%;
   -webkit-mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
   mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
+  transition: --reveal 0.45s ease-out;
 }
+.bio-line.is-revealed { --reveal: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .bio-line { -webkit-mask-image: none; mask-image: none; }
 }
