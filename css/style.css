@@ -625,9 +625,9 @@ button { font-family: inherit; }
 .bio-reveal-curtain {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, var(--white) 0%, var(--white) 78%, transparent 100%);
+  background: linear-gradient(to bottom, var(--white) 0%, var(--white) calc(100% - 110px), transparent 100%);
   transform: translateY(0);
-  animation: bioCurtainReveal 1.05s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: bioCurtainReveal 2.2s ease-in-out forwards;
   animation-delay: var(--reveal-delay, 0ms);
   pointer-events: none;
 }
