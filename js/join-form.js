@@ -89,7 +89,7 @@ const JOIN_MODAL_HTML = `
 
     <div class="join-card__step join-card__step--1" id="joinStep1">
       <div class="join-card__label" data-en="UNITE A:" data-es="ÚNETE A:">UNITE A:</div>
-      <img class="join-card__logo" src="assets/images/club-grasa/logo-halftone.png" alt="Club Grasa" />
+      <img class="join-card__logo" src="assets/images/club_grasa.png" alt="Club Grasa" />
       <div class="join-card__member-row">
         <span data-en="BECOME A" data-es="HAZTE">BECOME A</span>
         <mark data-en="MEMBER" data-es="MIEMBRO">MEMBER</mark>

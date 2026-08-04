@@ -402,10 +402,6 @@ button { font-family: inherit; }
   width: 100%;
   max-width: 280px;
   height: auto;
-  /* the source asset is white halftone dots (built for the black
-     Club Grasa video background) — invert it to match the mockup's
-     dark-on-white look here */
-  filter: invert(1);
   margin-bottom: 16px;
 }
 .join-card__member-row {
