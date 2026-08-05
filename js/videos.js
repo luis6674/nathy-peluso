@@ -37,12 +37,10 @@ const baseVideos = [
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'A CABALLO',
     image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
-    clip: 'assets/video/202510 NathyPeluso_ACaballo_CLIP.mp4',
   },
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'QUE LLUEVAN FLORES',
     image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c',
-    clip: 'assets/video/202510 NathyPeluso_QueLluevanFlores_CLIP.mp4',
   },
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'INSENSATA',
@@ -73,22 +71,10 @@ videos.forEach((video, i) => {
   item.className = 'videos-slider__item';
   item.dataset.index = i;
 
-  if (video.clip) {
-    const clip = document.createElement('video');
-    clip.src = video.clip;
-    clip.poster = video.image;
-    clip.muted = true;
-    clip.loop = true;
-    clip.autoplay = true;
-    clip.playsInline = true;
-    clip.setAttribute('aria-hidden', 'true');
-    item.appendChild(clip);
-  } else {
-    const img = document.createElement('img');
-    img.src = video.image;
-    img.alt = video.name;
-    item.appendChild(img);
-  }
+  const img = document.createElement('img');
+  img.src = video.image;
+  img.alt = video.name;
+  item.appendChild(img);
 
   item.addEventListener('click', () => setActiveVideo(i, true));
   videosSlider.appendChild(item);
