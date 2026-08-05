@@ -816,7 +816,8 @@ html[lang="es"] .lang-es-only { display: block; }
   overflow: hidden;
   transition: opacity 0.2s, border-color 0.2s;
 }
-.videos-slider__item img { width: 100%; height: 100%; object-fit: cover; }
+.videos-slider__item img,
+.videos-slider__item video { width: 100%; height: 100%; object-fit: cover; }
 .videos-slider__item.is-active {
   opacity: 1;
   border-color: var(--white);
