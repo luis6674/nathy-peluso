@@ -58,7 +58,6 @@ const videos = baseVideos;
 
 const videosSlider   = document.getElementById('videosSlider');
 const videosBgImage  = document.getElementById('videosBgImage');
-const videosBgVideo  = document.getElementById('videosBgVideo');
 const videosInfoYear = document.getElementById('videosInfoYear');
 const videosInfoType = document.getElementById('videosInfoType');
 const videosInfoName = document.getElementById('videosInfoName');
@@ -74,10 +73,22 @@ videos.forEach((video, i) => {
   item.className = 'videos-slider__item';
   item.dataset.index = i;
 
-  const img = document.createElement('img');
-  img.src = video.image;
-  img.alt = video.name;
-  item.appendChild(img);
+  if (video.clip) {
+    const clip = document.createElement('video');
+    clip.src = video.clip;
+    clip.poster = video.image;
+    clip.muted = true;
+    clip.loop = true;
+    clip.autoplay = true;
+    clip.playsInline = true;
+    clip.setAttribute('aria-hidden', 'true');
+    item.appendChild(clip);
+  } else {
+    const img = document.createElement('img');
+    img.src = video.image;
+    img.alt = video.name;
+    item.appendChild(img);
+  }
 
   item.addEventListener('click', () => setActiveVideo(i, true));
   videosSlider.appendChild(item);
@@ -101,21 +112,9 @@ function setActiveVideo(index, scroll, behavior) {
   activeEl.classList.add('is-active');
   if (changed) {
     videosBgImage.style.opacity = 0;
-    videosBgVideo.classList.remove('is-active');
     window.setTimeout(() => {
       videosBgImage.src = videos[index].image;
       videosBgImage.style.opacity = 1;
-      const clip = videos[index].clip;
-      if (clip) {
-        if (videosBgVideo.getAttribute('src') !== clip) videosBgVideo.src = clip;
-        videosBgVideo.currentTime = 0;
-        videosBgVideo.play().catch(() => {});
-        videosBgVideo.classList.add('is-active');
-      } else {
-        videosBgVideo.pause();
-        videosBgVideo.removeAttribute('src');
-        videosBgVideo.load();
-      }
     }, 150);
   }
   updateVideoInfo(videos[index]);
