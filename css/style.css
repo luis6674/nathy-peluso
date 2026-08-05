@@ -1006,7 +1006,7 @@ html[lang="es"] .lang-es-only { display: block; }
 .cg-section-title {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--white);
