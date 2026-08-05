@@ -626,23 +626,17 @@ button { font-family: inherit; }
   .reveal-img { opacity: 1; transform: none; transition: none; }
 }
 
-@property --reveal {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 0%;
+.reveal-p {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
-.bio-word { display: inline-block; }
-.bio-line {
-  display: block;
-  --reveal: 0%;
-  -webkit-mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
-  mask-image: linear-gradient(to right, black calc(var(--reveal) - 3%), transparent var(--reveal));
-  transition: --reveal 0.45s ease-out;
+.reveal-p.is-in {
+  opacity: 1;
+  transform: translateY(0);
 }
-.bio-line.is-revealed { --reveal: 100%; }
 @media (prefers-reduced-motion: reduce) {
-  .bio-line { -webkit-mask-image: none; mask-image: none; }
+  .reveal-p { opacity: 1; transform: none; transition: none; }
 }
 
 .bio-reveal-group {
@@ -1020,7 +1014,7 @@ html[lang="es"] .lang-es-only { display: block; }
   margin: 0 0 4px;
   padding-top: 10px;
 }
-.cg-section-title--sets { margin-top: 6px; }
+.cg-section-title--sets { margin-top: 26px; }
 
 .cg-manifesto p {
   font-family: var(--font-body);
