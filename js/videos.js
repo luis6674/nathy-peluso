@@ -37,12 +37,10 @@ const baseVideos = [
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'A CABALLO',
     image: 'assets/images/videos/a-caballo.jpg', watchUrl: 'https://www.youtube.com/watch?v=U-mUgBxs4zg',
-    clip: 'assets/video/202510 NathyPeluso_ACaballo_CLIP.mp4',
   },
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'QUE LLUEVAN FLORES',
     image: 'assets/images/videos/que-lluevan-flores.jpg', watchUrl: 'https://www.youtube.com/watch?v=Te2-MPEJO-c',
-    clip: 'assets/video/202510 NathyPeluso_QueLluevanFlores_CLIP.mp4',
   },
   {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'INSENSATA',
@@ -58,7 +56,6 @@ const videos = baseVideos;
 
 const videosSlider   = document.getElementById('videosSlider');
 const videosBgImage  = document.getElementById('videosBgImage');
-const videosBgVideo  = document.getElementById('videosBgVideo');
 const videosInfoYear = document.getElementById('videosInfoYear');
 const videosInfoType = document.getElementById('videosInfoType');
 const videosInfoName = document.getElementById('videosInfoName');
@@ -101,21 +98,9 @@ function setActiveVideo(index, scroll, behavior) {
   activeEl.classList.add('is-active');
   if (changed) {
     videosBgImage.style.opacity = 0;
-    videosBgVideo.classList.remove('is-active');
     window.setTimeout(() => {
       videosBgImage.src = videos[index].image;
       videosBgImage.style.opacity = 1;
-      const clip = videos[index].clip;
-      if (clip) {
-        if (videosBgVideo.getAttribute('src') !== clip) videosBgVideo.src = clip;
-        videosBgVideo.currentTime = 0;
-        videosBgVideo.play().catch(() => {});
-        videosBgVideo.classList.add('is-active');
-      } else {
-        videosBgVideo.pause();
-        videosBgVideo.removeAttribute('src');
-        videosBgVideo.load();
-      }
     }, 150);
   }
   updateVideoInfo(videos[index]);
