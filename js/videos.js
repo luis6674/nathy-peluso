@@ -23,10 +23,6 @@ const baseVideos = [
     image: 'assets/images/videos/erotika.jpg', watchUrl: 'https://www.youtube.com/watch?v=lPHdX2Kku0s',
   },
   {
-    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'MALPORTADA',
-    image: 'assets/images/videos/malportada.jpg', watchUrl: 'https://www.youtube.com/watch?v=LxzDkFpWTW4',
-  },
-  {
     year: '2025', type: { en: 'LYRIC VIDEO', es: 'LYRIC VIDEO' }, name: 'ANGEL',
     image: 'assets/images/videos/angel.jpg', watchUrl: 'https://www.youtube.com/watch?v=FRXaj-mqMg4',
   },
@@ -47,8 +43,8 @@ const baseVideos = [
     image: 'assets/images/videos/insensata.jpg', watchUrl: 'https://www.youtube.com/watch?v=YFWj_epMg1E',
   },
   {
-    year: '2026', type: { en: 'SESSION', es: 'SESIÓN' }, name: 'COMO EN EL IDILIO',
-    image: 'assets/images/videos/como-en-el-idilio.jpg', watchUrl: 'https://www.youtube.com/watch?v=OYtHvS7n7ic', default: true,
+    year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'MALPORTADA',
+    image: 'assets/images/videos/malportada.jpg', watchUrl: 'https://www.youtube.com/watch?v=LxzDkFpWTW4', default: true,
   },
 ];
 
