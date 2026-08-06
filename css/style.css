@@ -639,37 +639,6 @@ button { font-family: inherit; }
   .reveal-p { opacity: 1; transform: none; transition: none; }
 }
 
-.bio-reveal-group {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;
-}
-.bio-reveal-group .bio-photo > img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.bio-reveal-curtain {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: calc(100% + 110px);
-  transform: translateY(-110px);
-  background: linear-gradient(to bottom, transparent 0, var(--white) 110px, var(--white) 100%);
-  animation: bioCurtainReveal 3.6s ease-in-out forwards;
-  pointer-events: none;
-}
-@keyframes bioCurtainReveal {
-  to { transform: translateY(100%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bio-reveal-curtain { display: none; }
-}
-
 .bio-fade {
   position: fixed;
   left: var(--sidebar-w);
@@ -975,14 +944,6 @@ html[lang="es"] .lang-es-only { display: block; }
   display: block;
   width: fit-content;
   margin: 24px auto 0;
-  color: var(--white);
-  border-color: var(--white);
-}
-
-.cg-listen-cta {
-  display: block;
-  width: fit-content;
-  margin: 4px 0 10px;
   color: var(--white);
   border-color: var(--white);
 }
