@@ -513,7 +513,7 @@ button { font-family: inherit; }
    ============================================================ */
 .music-content {
   min-height: 100svh;
-  background: var(--white);
+  background: #D0FFE4;
   display: flex;
   flex-direction: column;
 }
