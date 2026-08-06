@@ -123,6 +123,7 @@ button { font-family: inherit; }
 .sidebar--on-yellow { background: var(--yellow); }
 .sidebar--on-white   { background: var(--white); }
 .sidebar--on-black   { background: var(--black); }
+.sidebar--on-mint    { background: #D0FFE4; }
 
 /* overlay variant — sits transparently on top of a full-bleed photo/video
    instead of occupying its own colored column (Videos, Club Grasa) */
