@@ -713,7 +713,7 @@ html[lang="es"] .lang-es-only { display: block; }
 }
 
 @media (max-width: 700px) {
-  .legal-trigger { bottom: 10px; left: 10px; }
+  .legal-trigger { bottom: 1px; left: 12px; }
   .legal-footer { font-size: 11px; padding: 24px 20px 18px; }
   .page--club-grasa .legal-trigger { left: unset; right: 10px; color: #FFF; }
   .page--club-grasa .btn--outline-dashed { border-color: #FFF; }
