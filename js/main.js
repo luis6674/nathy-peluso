@@ -107,6 +107,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeJoinModal();
 });
 
+// Allow linking straight to the newsletter signup — e.g.
+// index.html?join=1 — by opening the modal automatically on load.
+if (joinModal && new URLSearchParams(window.location.search).has('join')) {
+  openJoinModal();
+}
+
 /* ============================================================
    LEGAL FOOTER
    ============================================================ */
