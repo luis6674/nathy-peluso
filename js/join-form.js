@@ -3,7 +3,7 @@
    Injected once here and shared across every page, instead of
    duplicating the modal markup in each HTML file. Step 1 only asks
    for an email; submitting it reveals the full subscription form
-   (name, country, DOB, postal code, phone, consent) which posts to
+   (name, country, DOB, city, phone, consent) which posts to
    Sony's subscription backend, matching the fields/IDs required by
    that system (see newsletter/newsletter_form_nathy_peluso.html).
    ============================================================ */
@@ -139,9 +139,9 @@ const JOIN_MODAL_HTML = `
           <div class="join-card__error" id="err-field_dob" data-for="field_dob" data-en="Enter your date of birth" data-es="Introduce tu fecha de nacimiento"></div>
         </div>
         <div class="join-card__field">
-          <label for="field_postal_code" data-en="Postal code:" data-es="Código postal:">Postal code:</label>
-          <input id="field_postal_code" name="field_postal_code" type="text" maxlength="20" required aria-describedby="err-field_postal_code" aria-invalid="false" />
-          <div class="join-card__error" id="err-field_postal_code" data-for="field_postal_code" data-en="Enter your postal code" data-es="Introduce tu código postal"></div>
+          <label for="field_city" data-en="City:" data-es="Ciudad:">City:</label>
+          <input id="field_city" name="field_city" type="text" maxlength="60" required aria-describedby="err-field_city" aria-invalid="false" />
+          <div class="join-card__error" id="err-field_city" data-for="field_city" data-en="Enter your city" data-es="Introduce tu ciudad"></div>
         </div>
         <div class="join-card__field">
           <label for="phone" data-en="Mobile:" data-es="Móvil:">Mobile:</label>
@@ -330,7 +330,7 @@ newsletterForm.addEventListener('submit', e => {
     document.getElementById('field_last_name'),
     document.getElementById('field_country_region'),
     document.getElementById('field_dob'),
-    document.getElementById('field_postal_code'),
+    document.getElementById('field_city'),
   ];
 
   let hasError = false;
