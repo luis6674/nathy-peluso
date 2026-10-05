@@ -163,14 +163,20 @@
   <div class="modal-overlay" id="videoModal">
     <div class="video-modal" role="dialog" aria-modal="true" aria-label="Video player" tabindex="-1">
       <button class="video-modal__close" id="videoModalClose" aria-label="Close">✕</button>
-      <div class="video-modal__frame-wrap">
-        <iframe id="videoModalFrame" src="" title="Video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-modal__frame-wrap video-consent">
+        <iframe id="videoModalFrame" title="Video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-cookie-layer" role="group" aria-labelledby="video-modal-consent-text">
+          <p class="video-cookie-text" id="video-modal-consent-text" data-en="Viewing this content requires accepting cookies that may share data with third-party providers. Please accept cookies to proceed." data-es="Para ver este contenido es necesario aceptar cookies que pueden compartir datos con proveedores externos. Acepta las cookies para continuar.">Viewing this content requires accepting cookies that may share data with third-party providers. Please accept cookies to proceed.</p>
+          <button type="button" class="video-cookie-accept" data-en="Accept Cookies" data-es="Aceptar cookies">Accept Cookies</button>
+          <a class="video-cookie-link" id="videoModalYoutubeLink" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" data-en="Watch on YouTube instead" data-es="Ver en YouTube">Watch on YouTube instead</a>
+        </div>
       </div>
     </div>
   </div>
 
   <script src="js/join-form.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/video-consent.js"></script>
   <script src="js/videos.js"></script>
 </body>
 </html>

@@ -59,6 +59,7 @@ const videosWatch    = document.getElementById('videosWatch');
 const videoModal       = document.getElementById('videoModal');
 const videoModalFrame  = document.getElementById('videoModalFrame');
 const videoModalClose  = document.getElementById('videoModalClose');
+const videoModalYoutubeLink = document.getElementById('videoModalYoutubeLink');
 const currentLang = () => document.documentElement.lang || 'en';
 let currentVideoIndex = -1;
 
@@ -172,7 +173,10 @@ function youTubeIdFromUrl(url) {
 function openVideoModal(url) {
   const id = youTubeIdFromUrl(url);
   if (!id) return;
-  videoModalFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+  // The iframe only gets its src once YouTube cookies are accepted (see video-consent.js)
+  videoModalFrame.dataset.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+  videoModalYoutubeLink.href = `https://www.youtube.com/watch?v=${id}`;
+  VideoConsent.sync();
   videoModal.classList.add('is-open');
   const videoModalDialog = videoModal.querySelector('.video-modal');
   if (videoModalDialog) a11yOpenModal(videoModalDialog);
@@ -180,7 +184,8 @@ function openVideoModal(url) {
 
 function closeVideoModal() {
   videoModal.classList.remove('is-open');
-  videoModalFrame.src = '';
+  delete videoModalFrame.dataset.src;
+  videoModalFrame.removeAttribute('src');
   a11yCloseModal();
 }
 
