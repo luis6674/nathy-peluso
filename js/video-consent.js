@@ -1,10 +1,10 @@
 /* ============================================================
-   YOUTUBE EMBED COOKIE CONSENT
-   YouTube embeds set targeting cookies, so each one lives in a
+   THIRD-PARTY EMBED COOKIE CONSENT (YouTube, SoundCloud)
+   These embeds set targeting cookies (SoundCloud even before play), so each lives in a
    `.video-consent` wrapper holding an <iframe data-src="…"> (no `src`
    until consent, so nothing is requested from YouTube beforehand) and a
    `.video-cookie-layer` overlay with an "Accept cookies" button and a
-   plain link to the video on YouTube.
+   plain link to the content on the provider's site.
 
    Consent comes from OneTrust (loaded separately on production): the
    Targeting group C0004 must be active. Without OneTrust (e.g. local
