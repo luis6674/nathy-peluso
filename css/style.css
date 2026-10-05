@@ -1168,6 +1168,15 @@ html[lang="es"] .lang-es-only { display: block; }
   text-align: center;
 }
 .video-cookie-layer[hidden] { display: none; }
+.video-cookie-actions { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+
+/* compact variant for the fixed-height SoundCloud players */
+.video-consent--audio { aspect-ratio: auto; height: 120px; }
+.video-consent--audio .video-cookie-layer { gap: 8px; padding: 8px 16px; }
+.video-consent--audio .video-cookie-text { font-size: 11px; line-height: 1.3; }
+.video-consent--audio .video-cookie-actions { flex-direction: row; gap: 20px; }
+.video-consent--audio .video-cookie-accept { width: auto; padding: 7px 14px; font-size: 11px; }
+.video-consent--audio .video-cookie-link { font-size: 12px; }
 .video-cookie-text { max-width: 480px; font-size: 14px; line-height: 1.4; }
 .video-cookie-accept {
   width: 180px;
