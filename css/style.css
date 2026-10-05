@@ -966,12 +966,6 @@ html[lang="es"] .lang-es-only { display: block; }
   border: 0;
   border-radius: 2px;
 }
-.cg-youtube-embed {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  border-radius: 2px;
-}
 
 .cg-section-title {
   font-family: var(--font-mono);
@@ -1140,4 +1134,59 @@ html[lang="es"] .lang-es-only { display: block; }
   .cg-tabs { flex-wrap: wrap; }
   .cg-mix-item { flex-direction: column; align-items: flex-start; }
   .cg-mix-links { justify-content: flex-start; }
+}
+
+/* ============================================================
+   YOUTUBE COOKIE-CONSENT OVERLAY (see js/video-consent.js)
+   ============================================================ */
+.video-consent {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--black);
+}
+.video-consent iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-cookie-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(40, 40, 40, 0.96);
+  color: var(--white);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+.video-cookie-layer[hidden] { display: none; }
+.video-cookie-text { max-width: 480px; font-size: 14px; line-height: 1.4; }
+.video-cookie-accept {
+  width: 180px;
+  padding: 10px 20px;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.video-cookie-accept:hover { opacity: 0.8; }
+.video-cookie-link { color: var(--white); font-size: 14px; text-decoration: underline; }
+.video-cookie-link:hover { opacity: 0.8; }
+@media (max-width: 600px) {
+  .video-cookie-layer { gap: 10px; padding: 12px; }
+  .video-cookie-text { font-size: 12px; }
 }

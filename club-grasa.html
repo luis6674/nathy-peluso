@@ -154,7 +154,14 @@
               <div class="cg-mix-item__header">
                 <span>CLUB GRASA</span>
               </div>
-              <iframe class="cg-youtube-embed" src="https://www.youtube.com/embed/3UOCgCEtfTY" title="Club Grasa on YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe>
+              <div class="video-consent">
+                <iframe data-src="https://www.youtube.com/embed/3UOCgCEtfTY" title="Club Grasa on YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe>
+                <div class="video-cookie-layer" role="group" aria-labelledby="cg-set-consent-text">
+                  <p class="video-cookie-text" id="cg-set-consent-text" data-en="Viewing this content requires accepting cookies that may share data with third-party providers. Please accept cookies to proceed." data-es="Para ver este contenido es necesario aceptar cookies que pueden compartir datos con proveedores externos. Acepta las cookies para continuar.">Viewing this content requires accepting cookies that may share data with third-party providers. Please accept cookies to proceed.</p>
+                  <button type="button" class="video-cookie-accept" data-en="Accept Cookies" data-es="Aceptar cookies">Accept Cookies</button>
+                  <a class="video-cookie-link" href="https://www.youtube.com/watch?v=3UOCgCEtfTY" target="_blank" rel="noopener noreferrer" data-en="Watch on YouTube instead" data-es="Ver en YouTube">Watch on YouTube instead</a>
+                </div>
+              </div>
             </div>
 
             <h3 class="cg-section-title cg-section-title--sets" data-en="REMIXES" data-es="REMIXES">REMIXES</h3>
@@ -373,6 +380,7 @@
 
   <script src="js/join-form.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/video-consent.js"></script>
   <script src="js/club-grasa.js"></script>
 </body>
 </html>
