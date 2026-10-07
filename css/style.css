@@ -910,6 +910,12 @@ html[lang="es"] .lang-es-only { display: block; }
   cursor: pointer;
   white-space: nowrap;
 }
+.cg-merch-link {
+  margin-left: auto;
+  align-self: center;
+  color: var(--white);
+  border-color: var(--white);
+}
 .cg-tab.is-active {
   opacity: 1;
   background: var(--white);
