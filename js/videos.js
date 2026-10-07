@@ -48,7 +48,7 @@ const baseVideos = [
   },
   {
     year: '2026', type: { en: 'LIVE', es: 'DIRECTO' }, name: 'SALSA SPECTACULAR!',
-    image: 'assets/images/videos/salsa-spectacular.jpg', watchUrl: 'https://www.youtube.com/watch?v=bQNYMGvbFjo', default: true,
+    image: 'assets/images/videos/salsa-spectacular-bg.jpg', thumb: 'assets/images/videos/salsa-spectacular_thumb.jpg', watchUrl: 'https://www.youtube.com/watch?v=bQNYMGvbFjo', default: true,
   },
 ];
 
@@ -73,7 +73,7 @@ videos.forEach((video, i) => {
   item.dataset.index = i;
 
   const img = document.createElement('img');
-  img.src = video.image;
+  img.src = video.thumb || video.image;
   img.alt = video.name;
   item.appendChild(img);
 
