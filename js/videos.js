@@ -44,7 +44,11 @@ const baseVideos = [
   },
   {
     year: '2025', type: { en: 'VIDEOCLIP', es: 'VIDEOCLIP' }, name: 'MALPORTADA',
-    image: 'assets/images/videos/malportada.jpg', watchUrl: 'https://www.youtube.com/watch?v=LxzDkFpWTW4', default: true,
+    image: 'assets/images/videos/malportada.jpg', watchUrl: 'https://www.youtube.com/watch?v=LxzDkFpWTW4',
+  },
+  {
+    year: '2026', type: { en: 'LIVE', es: 'DIRECTO' }, name: 'SALSA SPECTACULAR!',
+    image: 'assets/images/videos/salsa-spectacular.jpg', watchUrl: 'https://www.youtube.com/watch?v=bQNYMGvbFjo', default: true,
   },
 ];
 
