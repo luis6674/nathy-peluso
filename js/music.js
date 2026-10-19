@@ -51,7 +51,11 @@ const releases = [
   },
   {
     year: '2026', type: { en: 'REMIX', es: 'REMIX' }, name: 'ANGEL (CLUB VERSION)',
-    image: 'assets/images/music/angel-remix.jpg', listenUrl: 'https://open.spotify.com/album/6qXCeSE5mvQZ1bcFjQIsB1', default: true,
+    image: 'assets/images/music/angel-remix.jpg', listenUrl: 'https://open.spotify.com/album/6qXCeSE5mvQZ1bcFjQIsB1',
+  },
+  {
+    year: '2026', type: { en: 'REMIX', es: 'REMIX' }, name: 'A CABALLO (GENOSIDRA REMIX)',
+    image: 'assets/images/music/club-grasa.jpg', listenUrl: 'https://open.spotify.com/track/4sw7LTAwvq0iVFTxUgAHI1', default: true,
   },
 ];
 
